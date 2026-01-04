@@ -5,55 +5,65 @@
 <title>Biodata Pelajar</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-/* BODY MOBILE-FIRST */
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
   background:linear-gradient(135deg,#1f1c2c,#928DAB);
   color:#333;
-  padding-top:60px; /* ruang navbar lebih kecil */
+  padding-top:80px;
   line-height:1.5;
 }
 
-/* NAVBAR MUZIK SLIM */
+/* MUSIC PLAYER - RESPONSIVE */
 .music-nav{
   position:fixed;
   top:0;
-  left:0;
-  width:100%;
-  padding:6px;             /* slim */
+  left:50%;
+  transform:translateX(-50%);
+  width:95%;
+  max-width:800px;
+  padding:8px 10px;
   display:flex;
   align-items:center;
-  gap:4px;                 /* jarak rapat */
-  background:rgba(70, 13, 87, 0.9);
+  gap:6px;
+  background:rgba(70,13,87,0.85);
   backdrop-filter:blur(8px);
+  border-radius:0 0 12px 12px;
   z-index:9999;
 }
 
+/* BUTTON PLAYER */
 .music-nav button{
-  width:28px;
-  height:28px;
   border:none;
   border-radius:50%;
   background:linear-gradient(135deg,#7f00ff,#e100ff);
   color:white;
-  font-size:12px;
   cursor:pointer;
   transition:.3s;
 }
 
+/* PROGRESS SLIDER */
 #progress{
   flex:1;
 }
 
+/* VOLUME */
 #volume{
-  width:40px;
+  width:50px;
 }
 
+/* TIME */
 #time{
-  font-size:10px;
+  font-size:12px;
   min-width:30px;
   text-align:center;
+}
+
+/* MOBILE DEFAULT */
+.music-nav button{
+  width:28px;
+  height:28px;
+  font-size:12px;
 }
 
 /* CONTAINER BIODATA */
@@ -132,23 +142,51 @@ body{
   transform:scale(1.05) rotate(2deg);
 }
 
-/* RESPONSIVE PHONE */
-@media (max-width:400px){
-  body{padding-top:50px;}  /* ruang navbar lebih kecil untuk telefon */
-  .profile h1{font-size:20px;}
-  .profile p,.section p{font-size:13px;}
-  .section h2{font-size:15px;}
-  .trait{font-size:12px; padding:5px 10px;}
-  .music-nav button{width:26px; height:26px; font-size:11px;}
-  #volume{width:35px;}
-  #time{font-size:10px; min-width:28px;}
+/* RESPONSIVE - TABLET & DESKTOP */
+@media (min-width:600px){
+  .music-nav{
+    padding:12px 16px;
+    gap:10px;
+  }
+  .music-nav button{
+    width:40px;
+    height:40px;
+    font-size:16px;
+  }
+  #volume{
+    width:70px;
+  }
+  #time{
+    font-size:14px;
+    min-width:40px;
+  }
+}
+
+/* DESKTOP LARGE */
+@media (min-width:900px){
+  .music-nav{
+    padding:14px 20px;
+    gap:12px;
+  }
+  .music-nav button{
+    width:50px;
+    height:50px;
+    font-size:18px;
+  }
+  #volume{
+    width:90px;
+  }
+  #time{
+    font-size:16px;
+    min-width:50px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR MUZIK SLIM -->
+<!-- MUSIC PLAYER -->
 <nav class="music-nav">
   <audio id="audio">
     <source src="Cahaya Pada Kita(1).mp3" type="audio/mpeg">
@@ -260,5 +298,3 @@ function formatTime(sec){
 
 </body>
 </html>
-
-
