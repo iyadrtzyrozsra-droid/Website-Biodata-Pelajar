@@ -2,10 +2,10 @@
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
-<title>Biodata Pelajar</title>
+<title>Biodata Peribadi</title>
 
 <style>
-
+/* BODY */
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
@@ -15,15 +15,16 @@ body{
   justify-content:center;
   align-items:flex-start;
   color:#333;
-  padding-top:80px; /* ruang untuk navbar */
+  padding-top:90px; /* ruang untuk navbar */
 }
 
+/* CONTAINER BIODATA */
 .container{
   background:#fff;
-  width:90%;
-  max-width:440px;
-  border-radius:20px;
-  padding:20px;
+  width:95%;        /* hampir penuh skrin */
+  max-width:none;    /* tiada had */
+  border-radius:16px;
+  padding:16px;
   overflow:hidden;
   background:
     linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
@@ -37,22 +38,25 @@ body{
   transform:translateY(-5px);
 }
 
+/* OVERLAY */
 .overlay{
   height:100%;
-  padding:20px;
+  padding:16px;
   color:white;
   display:flex;
   flex-direction:column;
   justify-content:flex-end;
 }
 
+/* PROFILE */
 .profile{
   text-align:center;
 }
 
 .profile img{
-  width:120px;
-  height:120px;
+  width:35vw;  /* ikut lebar skrin */
+  max-width:150px;
+  height:auto;
   border-radius:50%;
   object-fit:cover;
   border:3px solid #ffd905;
@@ -65,46 +69,49 @@ body{
 
 .profile h1{
   margin:12px 0 4px;
-  font-size:20px;
+  font-size:22px;
   color:#fff;
 }
 
 .profile p{
-  font-size:12px;
+  font-size:14px;
   color:#00ff2a;
 }
 
+/* SECTION */
 .section{
   margin-top:20px;
 }
 
 .section h2{
-  font-size:14px;
+  font-size:16px;
   color:#ffffff;
   margin-bottom:6px;
 }
 
 .section p{
-  font-size:12px;
+  font-size:14px;
   line-height:1.6;
   color:#ffc400;
 }
 
+/* TRAITS */
 .traits{
   display:flex;
   flex-wrap:wrap;
-  gap:6px;
+  gap:8px;
   margin-top:8px;
 }
 
 .trait{
   background:#0099ff;
-  padding:5px 10px;
+  padding:6px 12px;
   border-radius:18px;
-  font-size:11px;
+  font-size:13px;
   color:#fff;
 }
 
+/* NAVBAR MUZIK */
 .music-nav{
   position:fixed;
   top:0;
@@ -114,47 +121,57 @@ body{
   display:flex;
   align-items:center;
   gap:8px;
-  padding:8px 12px;
+  padding:10px;
   background:rgba(70, 13, 87, 0.85);
   backdrop-filter:blur(12px);
   border-radius:0 0 12px 12px;
-  width:95%;
-  max-width:800px;
+  width:100%;
   font-family:Arial,sans-serif;
   color:white;
 }
 
 .music-nav button{
-  width:36px;
-  height:36px;
+  width:40px;
+  height:40px;
   border:none;
   border-radius:50%;
   background:linear-gradient(135deg,#7f00ff,#e100ff);
   color:white;
-  font-size:14px;
+  font-size:15px;
   cursor:pointer;
   transition:.3s;
 }
 
+/* PROGRESS & VOLUME */
 #progress{
   flex:1;
 }
 
 #volume{
-  width:60px;
+  width:70px;
 }
 
 #time{
-  font-size:10px;
+  font-size:12px;
   min-width:35px;
   text-align:center;
 }
 
+/* RESPONSIVE UNTUK TELEFON */
+@media (max-width:400px){
+  .profile h1{font-size:20px;}
+  .profile p,.section p{font-size:13px;}
+  .section h2{font-size:15px;}
+  .trait{font-size:12px; padding:5px 10px;}
+  .music-nav button{width:36px; height:36px; font-size:14px;}
+  #volume{width:60px;}
+}
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR MUZIK -->
 <nav class="music-nav">
   <audio id="audio">
     <source src="Cahaya Pada Kita(1).mp3" type="audio/mpeg">
@@ -169,8 +186,8 @@ body{
   <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
 </nav>
 
+<!-- BIODATA -->
 <div class="container">
-
   <div class="profile">
     <img src="profile.jpeg" alt="Gambar Saya">
     <h1>Ahmad Zayn Rafi</h1>
@@ -193,7 +210,7 @@ body{
       Zayn percaya setiap orang ada kisah yang tidak diceritakan.
       Oleh sebab itu, dia tertarik dengan emosi, konflik,
       dan sisi gelap atau sunyi dalam kehidupan.
-      Semua itu menjadi sumber inspirasi Zayn untuk menulis novel.
+      Semua itu menjadi sumber inspirasi untuk Zayn berkarya.
     </p>
   </div>
 
@@ -217,7 +234,6 @@ body{
       kesan di hati sesiapa yang melihat atau membacanya.
     </p>
   </div>
-
 </div>
 
 <script>
