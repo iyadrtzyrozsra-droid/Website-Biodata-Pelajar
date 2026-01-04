@@ -14,7 +14,7 @@ body{
   line-height:1.5;
 }
 
-/* MUSIC NAVIGATION - PREMIUM RESPONSIVE */
+/* MUSIC NAVIGATION - PREMIUM + LOGO */
 .music-nav{
   position:fixed;
   top:0;
@@ -30,6 +30,13 @@ body{
   backdrop-filter:blur(12px);
   border-radius:0 0 16px 16px;
   z-index:9999;
+}
+
+/* LOGO */
+.nav-logo{
+  width:32px;
+  height:32px;
+  object-fit:contain;
 }
 
 /* BUTTONS */
@@ -161,6 +168,7 @@ body{
     padding:10px 16px;
     gap:10px;
   }
+  .nav-logo{width:36px; height:36px;}
   .music-nav button{
     width:40px;
     height:40px;
@@ -176,6 +184,7 @@ body{
     padding:14px 20px;
     gap:12px;
   }
+  .nav-logo{width:50px; height:50px;}
   .music-nav button{
     width:50px;
     height:50px;
@@ -189,8 +198,9 @@ body{
 
 <body>
 
-<!-- MUSIC PLAYER -->
+<!-- MUSIC PLAYER WITH LOGO -->
 <nav class="music-nav">
+  <img src="logo.png" alt="Logo" class="nav-logo">
   <audio id="audio">
     <source src="Cahaya Pada Kita(1).mp3" type="audio/mpeg">
   </audio>
