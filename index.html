@@ -36,7 +36,7 @@ body{
   padding:0 16px;
   z-index:9999;
   box-sizing:border-box;
-  transition:height .3s ease, padding .3s ease;
+  transition:top .3s ease, height .3s ease, padding .3s ease;
 }
 
 /* controls */
@@ -87,6 +87,7 @@ body{
   align-items:center;
   z-index:9998;
   box-sizing:border-box;
+  transition:top .3s ease;
 }
 
 /* progress */
@@ -222,7 +223,7 @@ body{
 </nav>
 
 <!-- ===== MOBILE SLIDERS ===== -->
-<div class="mobile-sliders">
+<div class="mobile-sliders" id="slider">
   <div class="progress-wrap">
     <span id="current">0:00</span>
     <input type="range" id="progress" value="0">
@@ -284,6 +285,7 @@ const volume=document.getElementById("volume");
 const current=document.getElementById("current");
 const duration=document.getElementById("duration");
 const navbar=document.getElementById("navbar");
+const slider=document.getElementById("slider");
 
 function togglePlay(){
   if(audio.paused){
@@ -315,14 +317,21 @@ function format(sec){
   return m+":"+s;
 }
 
-/* SHRINK NAVBAR ON SCROLL */
+/* SHRINK & HIDE NAVBAR ON SCROLL (slider ikut) */
 let lastScroll=0;
 window.addEventListener("scroll",()=>{
   let cur=window.pageYOffset;
-  if(cur>lastScroll){
+
+  if(cur>lastScroll){ 
+    // scroll ke bawah
     navbar.classList.add("shrink");
-  } else{
+    navbar.style.top="-70px"; // navbar hilang
+    slider.style.top="5px";   // slider ikut naik
+  } else {
+    // scroll ke atas
     navbar.classList.remove("shrink");
+    navbar.style.top="0";      // navbar muncul
+    slider.style.top="65px";   // slider kembali bawah navbar
   }
   lastScroll=cur;
 });
