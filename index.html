@@ -11,33 +11,33 @@ body{
   font-family:'Segoe UI',sans-serif;
   background:linear-gradient(135deg,#1f1c2c,#928DAB);
   color:#333;
-  padding-top:80px; /* ruang navbar */
+  padding-top:60px; /* ruang navbar lebih kecil */
   line-height:1.5;
 }
 
-/* NAVBAR MUZIK */
+/* NAVBAR MUZIK SLIM */
 .music-nav{
   position:fixed;
   top:0;
   left:0;
   width:100%;
-  padding:10px;
+  padding:6px;             /* slim */
   display:flex;
   align-items:center;
-  gap:8px;
+  gap:4px;                 /* jarak rapat */
   background:rgba(70, 13, 87, 0.9);
-  backdrop-filter:blur(10px);
+  backdrop-filter:blur(8px);
   z-index:9999;
 }
 
 .music-nav button{
-  width:36px;
-  height:36px;
+  width:28px;
+  height:28px;
   border:none;
   border-radius:50%;
   background:linear-gradient(135deg,#7f00ff,#e100ff);
   color:white;
-  font-size:14px;
+  font-size:12px;
   cursor:pointer;
   transition:.3s;
 }
@@ -47,12 +47,12 @@ body{
 }
 
 #volume{
-  width:60px;
+  width:40px;
 }
 
 #time{
-  font-size:12px;
-  min-width:35px;
+  font-size:10px;
+  min-width:30px;
   text-align:center;
 }
 
@@ -134,19 +134,21 @@ body{
 
 /* RESPONSIVE PHONE */
 @media (max-width:400px){
+  body{padding-top:50px;}  /* ruang navbar lebih kecil untuk telefon */
   .profile h1{font-size:20px;}
   .profile p,.section p{font-size:13px;}
   .section h2{font-size:15px;}
   .trait{font-size:12px; padding:5px 10px;}
-  .music-nav button{width:32px; height:32px; font-size:13px;}
-  #volume{width:50px;}
+  .music-nav button{width:26px; height:26px; font-size:11px;}
+  #volume{width:35px;}
+  #time{font-size:10px; min-width:28px;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR MUZIK -->
+<!-- NAVBAR MUZIK SLIM -->
 <nav class="music-nav">
   <audio id="audio">
     <source src="Cahaya Pada Kita(1).mp3" type="audio/mpeg">
