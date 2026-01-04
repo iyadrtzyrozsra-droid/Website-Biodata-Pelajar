@@ -6,7 +6,6 @@
 <title>Biodata Zayn</title>
 
 <style>
-/* ===== BODY ===== */
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
@@ -17,7 +16,7 @@ body{
   justify-content:center;
 }
 
-/* ===== SPOTIFY NAV PLAYER ===== */
+/* ===== NAV PLAYER ===== */
 .music-nav{
   position:fixed;
   top:0;
@@ -140,18 +139,24 @@ body{
   opacity:.9;
 }
 
+/* sections */
 .section{
   margin-top:20px;
   line-height:1.6;
 }
+.section h3{
+  margin-bottom:8px;
+  color:#ffd905;
+}
 
-.traits{
-  margin-top:18px;
+/* traits & skills */
+.traits, .skills{
+  margin-top:12px;
   display:flex;
   flex-wrap:wrap;
   gap:8px;
 }
-.trait{
+.trait, .skill{
   background:#1db954;
   color:black;
   padding:6px 14px;
@@ -216,18 +221,59 @@ body{
     <p>Tenang • Kreatif • Mendalam</p>
   </div>
 
+  <!-- Tentang Diri -->
   <div class="section">
-    <p>
-      Zayn seorang yang lebih selesa dalam ketenangan.  
-      Dia gemar memerhati, memahami emosi, dan mencari makna di sebalik setiap perkara.
-    </p>
+    <h3>Tentang Diri</h3>
+    <p>Zayn seorang yang lebih selesa dalam ketenangan. Dia gemar memerhati, memahami emosi, dan mencari makna di sebalik setiap perkara.  
+       Suka membaca, menulis, dan berkarya dalam seni kreatif.</p>
   </div>
 
-  <div class="traits">
-    <div class="trait">Pendiam</div>
-    <div class="trait">Kreatif</div>
-    <div class="trait">Berjiwa Seni</div>
-    <div class="trait">Pemerhati</div>
+  <!-- Pendidikan -->
+  <div class="section">
+    <h3>Pendidikan</h3>
+    <p>Sekolah Menengah Kebangsaan Seri Mutiara, Tingkatan 1-5, jurusan Sains dan Seni.</p>
+  </div>
+
+  <!-- Pengalaman -->
+  <div class="section">
+    <h3>Pengalaman</h3>
+    <ul>
+      <li>Menyertai kelab seni sekolah (2020-2023)</li>
+      <li>Menjadi penulis cerita pendek untuk majalah sekolah</li>
+      <li>Terlibat dalam projek animasi pendek komuniti (2022)</li>
+    </ul>
+  </div>
+
+  <!-- Kemahiran -->
+  <div class="section">
+    <h3>Kemahiran</h3>
+    <div class="skills">
+      <div class="skill">Melukis</div>
+      <div class="skill">Menulis Kreatif</div>
+      <div class="skill">Animasi</div>
+      <div class="skill">Piano</div>
+      <div class="skill">Editing Video</div>
+      <div class="skill">Fotografi</div>
+    </div>
+  </div>
+
+  <!-- Traits / Personaliti -->
+  <div class="section">
+    <h3>Personaliti</h3>
+    <div class="traits">
+      <div class="trait">Pendiam</div>
+      <div class="trait">Kreatif</div>
+      <div class="trait">Berjiwa Seni</div>
+      <div class="trait">Pemerhati</div>
+      <div class="trait">Empati</div>
+      <div class="trait">Fokus</div>
+    </div>
+  </div>
+
+  <!-- Minat -->
+  <div class="section">
+    <h3>Minat</h3>
+    <p>Muzik, animasi, seni digital, membaca novel dan menulis cerita inspirasi.</p>
   </div>
 
 </div>
