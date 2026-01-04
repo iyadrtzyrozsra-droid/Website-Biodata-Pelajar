@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Biodata Pelajar</title>
-  <link rel="icon" type="image/png" href="logo.png">
+<link rel="icon" type="image/png" href="logo.png">
 
 <style>
 body{
@@ -12,7 +12,7 @@ body{
   font-family:'Segoe UI',sans-serif;
   background:linear-gradient(135deg,#1f1c2c,#928DAB);
   min-height:100vh;
-  padding-top:100px;
+  padding-top:80px; /* cukup untuk navbar */
   display:flex;
   justify-content:center;
 }
@@ -25,64 +25,17 @@ body{
   transform:translateX(-50%);
   width:95%;
   max-width:900px;
-  height:70px;
+  height:60px;
   background:rgba(18,18,18,.95);
   backdrop-filter:blur(14px);
   border-radius:0 0 22px 22px;
   display:flex;
   align-items:center;
-  padding:10px 16px;
+  justify-content:space-between;
+  padding:0 16px;
   z-index:9999;
   gap:12px;
-  transition:height .3s ease, padding .3s ease;
-}
-
-/* shrink navbar on scroll */
-.music-nav.shrink{
-  height:50px;
-  padding:5px 16px;
-}
-
-/* album */
-.album{
-  width:48px;
-  height:48px;
-  border-radius:10px;
-  overflow:hidden;
-  flex-shrink:0;
-  transition:width .3s ease, height .3s ease;
-}
-.music-nav.shrink .album{
-  width:36px;
-  height:36px;
-}
-.album img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-/* info */
-.song-info{
-  flex:1;
-  min-width:0;
-  transition:opacity .3s ease;
-}
-.song-info h4{
-  margin:0;
-  font-size:14px;
-  color:white;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-.song-info p{
-  margin:0;
-  font-size:12px;
-  color:#b3b3b3;
-}
-.music-nav.shrink .song-info{
-  opacity:.7;
+  box-sizing:border-box;
 }
 
 /* controls */
@@ -111,7 +64,8 @@ body{
   display:flex;
   align-items:center;
   gap:6px;
-  width:220px;
+  flex:1;
+  margin:0 16px;
 }
 .progress-wrap span{
   font-size:11px;
@@ -223,15 +177,6 @@ body{
 <!-- ===== NAV PLAYER ===== -->
 <nav class="music-nav" id="navbar">
 
-  <div class="album">
-    <img src="album.jpg">
-  </div>
-
-  <div class="song-info">
-    <h4>Cahaya Pada Kita</h4>
-    <p>Zayn</p>
-  </div>
-
   <div class="controls">
     <button onclick="rewind()">⏮</button>
     <button id="playBtn" onclick="togglePlay()">▶</button>
@@ -261,7 +206,6 @@ body{
     <p>Pelajar, 16 Tahun • Tingkatan 4</p>
   </div>
 
-  <!-- Tentang Zayn -->
   <div class="section">
     <h3>Tentang Zayn</h3>
     <p>
@@ -269,7 +213,6 @@ body{
     </p>
   </div>
 
-  <!-- Minat & Hobi -->
   <div class="section">
     <h3>Minat & Hobi</h3>
     <div class="traits">
@@ -280,7 +223,6 @@ body{
     </div>
   </div>
 
-  <!-- Personaliti -->
   <div class="section">
     <h3>Personaliti</h3>
     <div class="traits">
@@ -291,7 +233,6 @@ body{
     </div>
   </div>
 
-  <!-- Matlamat -->
   <div class="section">
     <h3>Matlamat</h3>
     <p>
@@ -308,7 +249,6 @@ const progress=document.getElementById("progress");
 const volume=document.getElementById("volume");
 const current=document.getElementById("current");
 const duration=document.getElementById("duration");
-const navbar=document.getElementById("navbar");
 
 function togglePlay(){
   if(audio.paused){
@@ -339,21 +279,7 @@ function format(sec){
   let s=Math.floor(sec%60).toString().padStart(2,"0");
   return m+":"+s;
 }
-
-/* shrink navbar on scroll */
-let lastScroll=0;
-window.addEventListener("scroll",()=>{
-  let cur=window.pageYOffset;
-  if(cur>lastScroll){
-    navbar.classList.add("shrink");
-  } else{
-    navbar.classList.remove("shrink");
-  }
-  lastScroll=cur;
-});
 </script>
 
 </body>
 </html>
-
-
