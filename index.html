@@ -2,7 +2,7 @@
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
-<title>Biodata Pelajar</title>
+<title>Biodata Peribadi</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body{
@@ -10,11 +10,11 @@ body{
   font-family:'Segoe UI',sans-serif;
   background:linear-gradient(135deg,#1f1c2c,#928DAB);
   color:#333;
-  padding-top:100px; /* ruang navbar lebih besar untuk logo */
+  padding-top:90px; /* ruang navbar */
   line-height:1.5;
 }
 
-/* MUSIC NAVIGATION - PREMIUM + LOGO BESAR */
+/* MUSIC NAVIGATION - LOGO BESAR, BUTTON KECIL */
 .music-nav{
   position:fixed;
   top:0;
@@ -22,31 +22,33 @@ body{
   transform:translateX(-50%);
   width:95%;
   max-width:900px;
-  padding:10px 12px;
+  padding:8px 12px;
   display:flex;
   align-items:center;
-  gap:8px;
+  gap:6px;
   background:rgba(70,13,87,0.9);
   backdrop-filter:blur(12px);
   border-radius:0 0 16px 16px;
   z-index:9999;
 }
 
-/* LOGO BESAR */
+/* LOGO BESAR SAHAJA */
 .nav-logo{
-  width:50px;
-  height:50px;
+  width:70px;
+  height:70px;
   object-fit:contain;
-  transition: all 0.3s;
 }
 
-/* BUTTONS */
+/* BUTTONS KECIL */
 .music-nav button{
   border:none;
   border-radius:50%;
   background:linear-gradient(135deg,#7f00ff,#e100ff);
   color:white;
   cursor:pointer;
+  width:28px;
+  height:28px;
+  font-size:12px;
   transition:all 0.3s ease;
 }
 .music-nav button:hover{
@@ -54,7 +56,7 @@ body{
   box-shadow:0 4px 12px rgba(0,0,0,0.5);
 }
 
-/* SLIDERS */
+/* SLIDERS KECIL */
 #progress, #volume{
   -webkit-appearance:none;
   height:6px;
@@ -65,12 +67,11 @@ body{
 #progress::-webkit-slider-thumb,
 #volume::-webkit-slider-thumb{
   -webkit-appearance:none;
-  width:14px;
-  height:14px;
+  width:12px;
+  height:12px;
   border-radius:50%;
   background:#fff;
   box-shadow:0 2px 6px rgba(0,0,0,0.4);
-  transition:.3s;
 }
 #progress::-webkit-slider-thumb:hover,
 #volume::-webkit-slider-thumb:hover{
@@ -84,14 +85,6 @@ body{
   text-align:center;
   color:#fff;
 }
-
-/* MOBILE DEFAULT */
-.music-nav button{
-  width:28px;
-  height:28px;
-  font-size:12px;
-}
-#volume{width:40px;}
 
 /* CONTAINER BIODATA */
 .container{
@@ -165,41 +158,19 @@ body{
 
 /* RESPONSIVE TABLET/DESKTOP */
 @media (min-width:600px){
-  .music-nav{
-    padding:12px 16px;
-    gap:10px;
-  }
-  .nav-logo{width:70px; height:70px;}
-  .music-nav button{
-    width:40px;
-    height:40px;
-    font-size:16px;
-  }
-  #volume{width:70px;}
-  #time{font-size:14px;}
+  .nav-logo{width:90px; height:90px;} /* logo lebih besar di tablet */
 }
 
 /* LARGE DESKTOP */
 @media (min-width:900px){
-  .music-nav{
-    padding:14px 20px;
-    gap:12px;
-  }
-  .nav-logo{width:100px; height:100px;} /* logo besar di desktop */
-  .music-nav button{
-    width:50px;
-    height:50px;
-    font-size:18px;
-  }
-  #volume{width:90px;}
-  #time{font-size:16px;}
+  .nav-logo{width:120px; height:120px;} /* logo besar di desktop */
 }
 </style>
 </head>
 
 <body>
 
-<!-- MUSIC PLAYER WITH LARGE LOGO -->
+<!-- MUSIC PLAYER WITH LARGE LOGO ONLY -->
 <nav class="music-nav">
   <img src="logo.png" alt="Logo" class="nav-logo">
   <audio id="audio">
@@ -230,7 +201,7 @@ body{
 
   <div class="section">
     <h2>Cara Zayn Melihat Dunia</h2>
-    <p>Zayn percaya setiap orang ada kisah yang tidak diceritakan. Oleh sebab itu, dia tertarik dengan emosi, konflik, dan sisi gelap atau sunyi dalam kehidupan. Semua itu menjadi sumber inspirasi Zayn untuk menulis novel.</p>
+    <p>Zayn percaya setiap orang ada kisah yang tidak diceritakan. Oleh sebab itu, dia tertarik dengan emosi, konflik, dan sisi gelap atau sunyi dalam kehidupan. Semua itu menjadi sumber inspirasi untuk Zayn berkarya.</p>
   </div>
 
   <div class="section">
