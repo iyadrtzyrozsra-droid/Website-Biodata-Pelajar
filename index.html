@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<title>Biodata Pelajar</title>
+
+<style>
+
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#1f1c2c,#928DAB);
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  color:#333;
+  padding-top:80px; /* ruang untuk navbar */
+}
+
+.container{
+  background:#fff;
+  width:90%;
+  max-width:440px;
+  border-radius:20px;
+  padding:20px;
+  overflow:hidden;
+  background:
+    linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+    url("back-card.jpg") center/cover no-repeat;
+  box-shadow:0 20px 50px rgba(0,0,0,0.35);
+  transition:transform .4s;
+  margin-bottom:40px;
+}
+
+.container:hover{
+  transform:translateY(-5px);
+}
+
+.overlay{
+  height:100%;
+  padding:20px;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+
+.profile{
+  text-align:center;
+}
+
+.profile img{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid #ffd905;
+  transition:transform .4s;
+}
+
+.container:hover img{
+  transform:scale(1.05) rotate(2deg);
+}
+
+.profile h1{
+  margin:12px 0 4px;
+  font-size:20px;
+  color:#fff;
+}
+
+.profile p{
+  font-size:12px;
+  color:#00ff2a;
+}
+
+.section{
+  margin-top:20px;
+}
+
+.section h2{
+  font-size:14px;
+  color:#ffffff;
+  margin-bottom:6px;
+}
+
+.section p{
+  font-size:12px;
+  line-height:1.6;
+  color:#ffc400;
+}
+
+.traits{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:8px;
+}
+
+.trait{
+  background:#0099ff;
+  padding:5px 10px;
+  border-radius:18px;
+  font-size:11px;
+  color:#fff;
+}
+
+.music-nav{
+  position:fixed;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  background:rgba(70, 13, 87, 0.85);
+  backdrop-filter:blur(12px);
+  border-radius:0 0 12px 12px;
+  width:95%;
+  max-width:800px;
+  font-family:Arial,sans-serif;
+  color:white;
+}
+
+.music-nav button{
+  width:36px;
+  height:36px;
+  border:none;
+  border-radius:50%;
+  background:linear-gradient(135deg,#7f00ff,#e100ff);
+  color:white;
+  font-size:14px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+#progress{
+  flex:1;
+}
+
+#volume{
+  width:60px;
+}
+
+#time{
+  font-size:10px;
+  min-width:35px;
+  text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="music-nav">
+  <audio id="audio">
+    <source src="Cahaya Pada Kita(1).mp3" type="audio/mpeg">
+  </audio>
+
+  <button onclick="rewind()">⏪</button>
+  <button id="playBtn" onclick="togglePlay()">▶</button>
+  <button onclick="forward()">⏩</button>
+
+  <input type="range" id="progress" value="0">
+  <span id="time">0:00</span>
+  <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
+</nav>
+
+<div class="container">
+
+  <div class="profile">
+    <img src="profile.jpeg" alt="Gambar Saya">
+    <h1>Ahmad Zayn Rafi</h1>
+    <p>Individu yang tenang, berfikiran jauh dan berjiwa kreatif</p>
+  </div>
+
+  <div class="section">
+    <h2>Tentang Zayn</h2>
+    <p>
+      Zayn seorang yang lebih selesa dalam ketenangan.
+      Zayn bukan jenis yang banyak bercakap, tetapi dia
+      memerhati dengan teliti dan berfikir dengan mendalam.
+      Zayn suka memahami sesuatu dari sudut yang lebih bermakna.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Cara Zayn Melihat Dunia</h2>
+    <p>
+      Zayn percaya setiap orang ada kisah yang tidak diceritakan.
+      Oleh sebab itu, dia tertarik dengan emosi, konflik,
+      dan sisi gelap atau sunyi dalam kehidupan.
+      Semua itu menjadi sumber inspirasi Zayn untuk menulis novel.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Sifat Diri Zayn</h2>
+    <div class="traits">
+      <div class="trait">Pendiam</div>
+      <div class="trait">Berfikiran mendalam</div>
+      <div class="trait">Kreatif</div>
+      <div class="trait">Peka terhadap emosi</div>
+      <div class="trait">Fokus bila berminat</div>
+      <div class="trait">Suka mencipta</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Aspirasi</h2>
+    <p>
+      Zayn ingin menghasilkan sesuatu yang mempunyai jiwa,
+      bukan sekadar cantik di mata, tetapi mampu meninggalkan
+      kesan di hati sesiapa yang melihat atau membacanya.
+    </p>
+  </div>
+
+</div>
+
+<script>
+const audio = document.getElementById("audio");
+const playBtn = document.getElementById("playBtn");
+const progress = document.getElementById("progress");
+const time = document.getElementById("time");
+const volume = document.getElementById("volume");
+
+function togglePlay(){
+  if(audio.paused){
+    audio.play();
+    playBtn.textContent = "❚❚";
+  }else{
+    audio.pause();
+    playBtn.textContent = "▶";
+  }
+}
+
+function rewind(){
+  audio.currentTime = Math.max(0, audio.currentTime - 10);
+}
+
+function forward(){
+  audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+}
+
+audio.addEventListener("timeupdate", () => {
+  progress.value = (audio.currentTime / audio.duration) * 100 || 0;
+  time.textContent = formatTime(audio.currentTime);
+});
+
+progress.addEventListener("input", () => {
+  audio.currentTime = (progress.value / 100) * audio.duration;
+});
+
+volume.addEventListener("input", () => {
+  audio.volume = volume.value;
+});
+
+function formatTime(sec){
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60).toString().padStart(2,"0");
+  return `${m}:${s}`;
+}
+</script>
+
+</body>
+</html>
