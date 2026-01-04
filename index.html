@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Biodata Zayn</title>
+<title>Biodata Ahmad Zayn Rafi</title>
 
 <style>
 body{
@@ -33,6 +33,11 @@ body{
   padding:10px 16px;
   z-index:9999;
   gap:12px;
+  transition:height .3s ease, padding .3s ease;
+}
+.music-nav.shrink{
+  height:50px;
+  padding:5px 16px;
 }
 
 /* album */
@@ -42,6 +47,11 @@ body{
   border-radius:10px;
   overflow:hidden;
   flex-shrink:0;
+  transition:width .3s ease, height .3s ease;
+}
+.music-nav.shrink .album{
+  width:36px;
+  height:36px;
 }
 .album img{
   width:100%;
@@ -53,6 +63,7 @@ body{
 .song-info{
   flex:1;
   min-width:0;
+  transition:opacity .3s ease;
 }
 .song-info h4{
   margin:0;
@@ -66,6 +77,9 @@ body{
   margin:0;
   font-size:12px;
   color:#b3b3b3;
+}
+.music-nav.shrink .song-info{
+  opacity:.7;
 }
 
 /* controls */
@@ -83,6 +97,10 @@ body{
   color:black;
   font-size:14px;
   cursor:pointer;
+  transition:transform .2s;
+}
+.controls button:hover{
+  transform:scale(1.1);
 }
 
 /* progress */
@@ -119,8 +137,17 @@ body{
   box-shadow:0 30px 70px rgba(0,0,0,.35);
   color:white;
   margin-top:20px;
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeIn 1s forwards;
 }
 
+/* fade in card */
+@keyframes fadeIn{
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* profile */
 .profile{
   text-align:center;
 }
@@ -139,7 +166,7 @@ body{
   opacity:.9;
 }
 
-/* sections */
+/* section */
 .section{
   margin-top:20px;
   line-height:1.6;
@@ -149,20 +176,25 @@ body{
   color:#ffd905;
 }
 
-/* traits & skills */
-.traits, .skills{
-  margin-top:12px;
+/* ===== TRAITS PERIBADI ===== */
+.traits{
   display:flex;
-  flex-wrap:wrap;
-  gap:8px;
+  flex-direction:column;
+  gap:12px;
 }
-.trait, .skill{
-  background:#1db954;
+.trait{
+  background:rgba(29,185,84,0.8);
   color:black;
-  padding:6px 14px;
-  border-radius:20px;
-  font-size:12px;
+  padding:12px 16px;
+  border-radius:16px;
+  font-size:13px;
   font-weight:600;
+  transition:transform .2s, box-shadow .2s;
+  cursor:pointer;
+}
+.trait:hover{
+  transform:scale(1.03);
+  box-shadow:0 0 12px #1db954;
 }
 
 /* ===== MOBILE ===== */
@@ -181,7 +213,7 @@ body{
 <body>
 
 <!-- ===== NAV PLAYER ===== -->
-<nav class="music-nav">
+<nav class="music-nav" id="navbar">
 
   <div class="album">
     <img src="album.jpg">
@@ -212,68 +244,34 @@ body{
 
 </nav>
 
-<!-- ===== BIODATA ===== -->
+<!-- ===== BIODATA ZAYN ===== -->
 <div class="container">
 
   <div class="profile">
     <img src="profile.jpeg">
     <h1>Ahmad Zayn Rafi</h1>
-    <p>Tenang • Kreatif • Mendalam</p>
+    <p>Pelajar, 16 Tahun • Tingkatan 4 • SMK Perdana Jaya</p>
   </div>
 
-  <!-- Tentang Diri -->
   <div class="section">
     <h3>Tentang Diri</h3>
-    <p>Zayn seorang yang lebih selesa dalam ketenangan. Dia gemar memerhati, memahami emosi, dan mencari makna di sebalik setiap perkara.  
-       Suka membaca, menulis, dan berkarya dalam seni kreatif.</p>
-  </div>
-
-  <!-- Pendidikan -->
-  <div class="section">
-    <h3>Pendidikan</h3>
-    <p>Sekolah Menengah Kebangsaan Seri Mutiara, Tingkatan 1-5, jurusan Sains dan Seni.</p>
-  </div>
-
-  <!-- Pengalaman -->
-  <div class="section">
-    <h3>Pengalaman</h3>
-    <ul>
-      <li>Menyertai kelab seni sekolah (2020-2023)</li>
-      <li>Menjadi penulis cerita pendek untuk majalah sekolah</li>
-      <li>Terlibat dalam projek animasi pendek komuniti (2022)</li>
-    </ul>
-  </div>
-
-  <!-- Kemahiran -->
-  <div class="section">
-    <h3>Kemahiran</h3>
-    <div class="skills">
-      <div class="skill">Melukis</div>
-      <div class="skill">Menulis Kreatif</div>
-      <div class="skill">Animasi</div>
-      <div class="skill">Piano</div>
-      <div class="skill">Editing Video</div>
-      <div class="skill">Fotografi</div>
-    </div>
-  </div>
-
-  <!-- Traits / Personaliti -->
-  <div class="section">
-    <h3>Personaliti</h3>
     <div class="traits">
-      <div class="trait">Pendiam</div>
-      <div class="trait">Kreatif</div>
-      <div class="trait">Berjiwa Seni</div>
-      <div class="trait">Pemerhati</div>
-      <div class="trait">Empati</div>
-      <div class="trait">Fokus</div>
+      <div class="trait">
+        Sejak lahir, Zayn hidup sendiri kerana dilahirkan sebagai anak luar nikah dan tidak dijaga oleh keluarga kandung. Kehidupan yang sunyi membuatkan dia lebih berdikari dan matang dari usianya.
+      </div>
+      <div class="trait">
+        Di sekolah, Zayn seorang yang pendiam dan introvert. Dia jarang bercampur dengan kumpulan besar dan lebih selesa bekerja sendiri. Dia suka mengamati persekitaran dan mengekalkan zon selesa sendiri, memilih hanya beberapa rakan rapat yang dipercayainya.
+      </div>
+      <div class="trait">
+        Zayn mempunyai minat yang sederhana tetapi bermakna baginya. Dia suka membaca, menulis catatan harian, dan kadang-kadang melukis secara santai untuk mengekspresikan diri. Aktiviti-aktiviti ini membantunya menenangkan fikiran dan memberi ruang untuk memproses kehidupan yang penuh cabaran.
+      </div>
+      <div class="trait">
+        Matlamat utama Zayn adalah mencari sahabat perempuannya ketika kecil yang hilang di hutan, seseorang yang pernah sangat rapat dengannya dan meninggalkan kesan mendalam dalam hidupnya. Impian ini menjadi dorongan baginya untuk terus berharap, walaupun perjalanan hidupnya penuh cabaran dan sunyi.
+      </div>
+      <div class="trait">
+        Walaupun hidup sendiri, Zayn belajar berdikari dan fokus pada kehidupannya. Dia menyimpan harapan bahawa suatu hari dia akan bertemu kembali dengan sahabatnya dan membina semula ikatan yang hilang sejak kecil.
+      </div>
     </div>
-  </div>
-
-  <!-- Minat -->
-  <div class="section">
-    <h3>Minat</h3>
-    <p>Muzik, animasi, seni digital, membaca novel dan menulis cerita inspirasi.</p>
   </div>
 
 </div>
@@ -285,6 +283,7 @@ const progress=document.getElementById("progress");
 const volume=document.getElementById("volume");
 const current=document.getElementById("current");
 const duration=document.getElementById("duration");
+const navbar=document.getElementById("navbar");
 
 function togglePlay(){
   if(audio.paused){
@@ -315,6 +314,18 @@ function format(sec){
   let s=Math.floor(sec%60).toString().padStart(2,"0");
   return m+":"+s;
 }
+
+/* shrink navbar on scroll */
+let lastScroll=0;
+window.addEventListener("scroll",()=>{
+  let cur=window.pageYOffset;
+  if(cur>lastScroll){
+    navbar.classList.add("shrink");
+  } else{
+    navbar.classList.remove("shrink");
+  }
+  lastScroll=cur;
+});
 </script>
 
 </body>
