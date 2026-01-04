@@ -15,52 +15,66 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  padding-top:110px;
+  padding-top:120px;
 }
 
 /* ===== NAVBAR ===== */
 .music-nav{
   position:fixed;
-  top:14px;
+  top:18px;
   left:50%;
   transform:translateX(-50%);
   width:92%;
   max-width:900px;
-  height:58px;
+  height:56px;
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:8px 16px;
-  border-radius:18px;
+  border-radius:22px;
   background:rgba(255,255,255,.08);
   backdrop-filter:blur(18px);
   border:1px solid rgba(255,255,255,.15);
   box-shadow:
-    0 15px 40px rgba(0,0,0,.4),
+    0 18px 45px rgba(0,0,0,.45),
     inset 0 0 20px rgba(255,255,255,.05);
   z-index:9999;
-  transition:.45s ease;
+  overflow:visible;
+  transition:transform .4s ease;
 }
 
-/* ===== LOGO HERO ===== */
-.nav-logo{
-  width:130px;
+/* ===== LOGO EMBLEM FLOAT ===== */
+.logo-wrap{
   position:absolute;
   left:50%;
+  top:-42px;
   transform:translateX(-50%);
-  top:-32px;
-  filter:
-    drop-shadow(0 0 18px rgba(200,0,255,.8))
-    drop-shadow(0 0 40px rgba(140,0,255,.5));
+  width:92px;
+  height:92px;
+  border-radius:50%;
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(14px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:
+    0 0 0 4px rgba(255,0,255,.45),
+    0 0 35px rgba(200,0,255,.9);
   animation:float 4s ease-in-out infinite;
 }
 
+.logo-wrap img{
+  width:58px;
+  filter:drop-shadow(0 0 14px rgba(255,0,255,1));
+}
+
+/* animasi lembut */
 @keyframes float{
   0%,100%{transform:translate(-50%,0);}
   50%{transform:translate(-50%,-10px);}
 }
 
-/* ===== GROUP ===== */
+/* ===== NAV GROUP ===== */
 .nav-left,.nav-right{
   display:flex;
   align-items:center;
@@ -78,13 +92,13 @@ body{
   color:white;
   font-size:13px;
   cursor:pointer;
-  box-shadow:0 0 12px rgba(200,0,255,.6);
+  box-shadow:0 0 14px rgba(200,0,255,.7);
   transition:.3s;
 }
 
 .music-nav button:hover{
   transform:scale(1.15);
-  box-shadow:0 0 22px rgba(255,0,255,1);
+  box-shadow:0 0 25px rgba(255,0,255,1);
 }
 
 /* ===== SLIDER ===== */
@@ -95,7 +109,7 @@ body{
   appearance:none;
   border-radius:4px;
   background:linear-gradient(90deg,#ff00ff,#00ffff);
-  box-shadow:0 0 10px rgba(255,0,255,.6);
+  box-shadow:0 0 12px rgba(255,0,255,.7);
 }
 
 #progress::-webkit-slider-thumb{
@@ -124,7 +138,7 @@ body{
     linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
     url("back-card.jpg") center/cover no-repeat;
   width:440px;
-  border-radius:28px;
+  border-radius:30px;
   padding:34px;
   box-shadow:0 40px 90px rgba(0,0,0,.45);
   color:white;
@@ -137,7 +151,7 @@ body{
   border-radius:50%;
   object-fit:cover;
   border:4px solid #ff00ff;
-  box-shadow:0 0 25px rgba(255,0,255,.8);
+  box-shadow:0 0 28px rgba(255,0,255,.9);
 }
 
 .section{margin-top:22px;}
@@ -147,12 +161,17 @@ body{
   border-radius:20px;
   font-size:12px;
   background:linear-gradient(135deg,#7f00ff,#00ffff);
-  box-shadow:0 0 12px rgba(0,255,255,.6);
+  box-shadow:0 0 14px rgba(0,255,255,.6);
 }
 
 /* ===== MOBILE ===== */
 @media(max-width:600px){
-  .nav-logo{width:70px;top:-16px;}
+  .logo-wrap{
+    width:60px;
+    height:60px;
+    top:-28px;
+  }
+  .logo-wrap img{width:36px;}
   .music-nav{height:54px;}
 }
 </style>
@@ -169,7 +188,10 @@ body{
     <button onclick="forward()">⏩</button>
   </div>
 
-  <img src="logo.png" class="nav-logo">
+  <!-- LOGO EMBLEM -->
+  <div class="logo-wrap">
+    <img src="logo.png">
+  </div>
 
   <div class="nav-right">
     <input type="range" id="progress" value="0">
@@ -191,7 +213,7 @@ body{
   </div>
 
   <div class="section">
-    <p>Zayn percaya emosi dan makna menjadikan sesuatu karya hidup.</p>
+    <p>Zayn percaya emosi dan makna menjadikan sesuatu karya benar-benar hidup.</p>
   </div>
 
   <div class="traits">
@@ -209,6 +231,7 @@ const progress=document.getElementById("progress");
 const time=document.getElementById("time");
 const volume=document.getElementById("volume");
 
+/* music player */
 function togglePlay(){
   if(audio.paused){
     audio.play(); playBtn.textContent="❚❚";
@@ -232,13 +255,13 @@ function format(sec){
   return m+":"+s;
 }
 
-/* auto-hide */
+/* auto-hide navbar */
 let last=0;
 const nav=document.getElementById("navbar");
 window.addEventListener("scroll",()=>{
   let cur=window.pageYOffset;
   nav.style.transform=cur>last
-    ?"translate(-50%,-120%)"
+    ?"translate(-50%,-140%)"
     :"translate(-50%,0)";
   last=cur;
 });
