@@ -3,68 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <title>Biodata Peribadi</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-/* BODY */
+/* BODY MOBILE-FIRST */
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
   background:linear-gradient(135deg,#1f1c2c,#928DAB);
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
   color:#333;
-  padding-top:90px; /* ruang untuk navbar */
+  padding-top:80px; /* ruang navbar */
+  line-height:1.5;
+}
+
+/* NAVBAR MUZIK */
+.music-nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:10px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(70, 13, 87, 0.9);
+  backdrop-filter:blur(10px);
+  z-index:9999;
+}
+
+.music-nav button{
+  width:36px;
+  height:36px;
+  border:none;
+  border-radius:50%;
+  background:linear-gradient(135deg,#7f00ff,#e100ff);
+  color:white;
+  font-size:14px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+#progress{
+  flex:1;
+}
+
+#volume{
+  width:60px;
+}
+
+#time{
+  font-size:12px;
+  min-width:35px;
+  text-align:center;
 }
 
 /* CONTAINER BIODATA */
 .container{
-  background:#fff;
-  width:95%;        /* hampir penuh skrin */
-  max-width:none;    /* tiada had */
+  width:95%;
+  max-width:500px;
+  margin:0 auto 40px auto;
   border-radius:16px;
   padding:16px;
-  overflow:hidden;
   background:
-    linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
     url("back-card.jpg") center/cover no-repeat;
-  box-shadow:0 20px 50px rgba(0,0,0,0.35);
-  transition:transform .4s;
-  margin-bottom:40px;
-}
-
-.container:hover{
-  transform:translateY(-5px);
-}
-
-/* OVERLAY */
-.overlay{
-  height:100%;
-  padding:16px;
-  color:white;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
+  box-shadow:0 15px 40px rgba(0,0,0,0.3);
 }
 
 /* PROFILE */
 .profile{
   text-align:center;
+  margin-bottom:16px;
 }
 
 .profile img{
-  width:35vw;  /* ikut lebar skrin */
-  max-width:150px;
+  width:40vw;
+  max-width:140px;
   height:auto;
   border-radius:50%;
-  object-fit:cover;
   border:3px solid #ffd905;
   transition:transform .4s;
-}
-
-.container:hover img{
-  transform:scale(1.05) rotate(2deg);
 }
 
 .profile h1{
@@ -78,20 +95,19 @@ body{
   color:#00ff2a;
 }
 
-/* SECTION */
+/* SECTIONS */
 .section{
-  margin-top:20px;
+  margin-top:16px;
 }
 
 .section h2{
   font-size:16px;
-  color:#ffffff;
+  color:#fff;
   margin-bottom:6px;
 }
 
 .section p{
   font-size:14px;
-  line-height:1.6;
   color:#ffc400;
 }
 
@@ -99,7 +115,7 @@ body{
 .traits{
   display:flex;
   flex-wrap:wrap;
-  gap:8px;
+  gap:6px;
   margin-top:8px;
 }
 
@@ -111,60 +127,19 @@ body{
   color:#fff;
 }
 
-/* NAVBAR MUZIK */
-.music-nav{
-  position:fixed;
-  top:0;
-  left:50%;
-  transform:translateX(-50%);
-  z-index:9999;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  padding:10px;
-  background:rgba(70, 13, 87, 0.85);
-  backdrop-filter:blur(12px);
-  border-radius:0 0 12px 12px;
-  width:100%;
-  font-family:Arial,sans-serif;
-  color:white;
+/* HOVER ANIMATIONS */
+.container:hover .profile img{
+  transform:scale(1.05) rotate(2deg);
 }
 
-.music-nav button{
-  width:40px;
-  height:40px;
-  border:none;
-  border-radius:50%;
-  background:linear-gradient(135deg,#7f00ff,#e100ff);
-  color:white;
-  font-size:15px;
-  cursor:pointer;
-  transition:.3s;
-}
-
-/* PROGRESS & VOLUME */
-#progress{
-  flex:1;
-}
-
-#volume{
-  width:70px;
-}
-
-#time{
-  font-size:12px;
-  min-width:35px;
-  text-align:center;
-}
-
-/* RESPONSIVE UNTUK TELEFON */
+/* RESPONSIVE PHONE */
 @media (max-width:400px){
   .profile h1{font-size:20px;}
   .profile p,.section p{font-size:13px;}
   .section h2{font-size:15px;}
   .trait{font-size:12px; padding:5px 10px;}
-  .music-nav button{width:36px; height:36px; font-size:14px;}
-  #volume{width:60px;}
+  .music-nav button{width:32px; height:32px; font-size:13px;}
+  #volume{width:50px;}
 }
 </style>
 </head>
