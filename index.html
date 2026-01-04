@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Biodata Pelajar</title>
+<title>Biodata Zayn Interaktif</title>
 
 <style>
 body{
@@ -35,6 +35,8 @@ body{
   gap:12px;
   transition:height .3s ease, padding .3s ease;
 }
+
+/* shrink navbar on scroll */
 .music-nav.shrink{
   height:50px;
   padding:5px 16px;
@@ -157,6 +159,10 @@ body{
   border-radius:50%;
   object-fit:cover;
   border:4px solid #ffd905;
+  transition:transform .3s ease;
+}
+.profile img:hover{
+  transform:scale(1.05) rotate(1deg);
 }
 .profile h1{
   margin:12px 0 4px;
@@ -166,7 +172,7 @@ body{
   opacity:.9;
 }
 
-/* section */
+/* sections */
 .section{
   margin-top:20px;
   line-height:1.6;
@@ -176,25 +182,26 @@ body{
   color:#ffd905;
 }
 
-/* ===== TRAITS PERIBADI ===== */
+/* traits & hobi */
 .traits{
+  margin-top:12px;
   display:flex;
-  flex-direction:column;
-  gap:12px;
+  flex-wrap:wrap;
+  gap:8px;
 }
 .trait{
-  background:rgba(29,185,84,0.8);
+  background:#1db954;
   color:black;
-  padding:12px 16px;
-  border-radius:16px;
-  font-size:13px;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:12px;
   font-weight:600;
   transition:transform .2s, box-shadow .2s;
   cursor:pointer;
 }
 .trait:hover{
-  transform:scale(1.03);
-  box-shadow:0 0 12px #1db954;
+  transform:scale(1.1);
+  box-shadow:0 0 10px #1db954;
 }
 
 /* ===== MOBILE ===== */
@@ -250,23 +257,48 @@ body{
   <div class="profile">
     <img src="profile.jpeg">
     <h1>Ahmad Zayn Rafi</h1>
-    <p>Pelajar, 16 Tahun • Tingkatan 4 • SMK Perdana Jaya</p>
+    <p>Pelajar, 16 Tahun • Tingkatan 4</p>
   </div>
 
+  <!-- Tentang Zayn -->
   <div class="section">
-    <h3>Tentang Diri</h3>
+    <h3>Tentang Zayn</h3>
+    <p>
+      Ahmad Zayn Rafi seorang pelajar pendiam dan introvert. Dia lebih selesa bekerja sendiri dan jarang bercampur dengan kumpulan besar. Zayn suka mengamati persekitaran dan memilih rakan rapat yang dipercayainya sahaja. Hidupnya sejak kecil memerlukan dia belajar berdikari.
+    </p>
+  </div>
+
+  <!-- Minat & Hobi -->
+  <div class="section">
+    <h3>Minat & Hobi</h3>
     <div class="traits">
-      <div class="trait">
-        Sejak lahir, Zayn hidup sendiri kerana dilahirkan sebagai anak luar nikah dan tidak dijaga oleh keluarga kandung. Kehidupan yang sunyi membuatkan dia lebih berdikari dan matang dari usianya.
-     
-        Di sekolah, Zayn seorang yang pendiam dan introvert. Dia jarang bercampur dengan kumpulan besar dan lebih selesa bekerja sendiri. Dia suka mengamati persekitaran dan mengekalkan zon selesa sendiri, memilih hanya beberapa rakan rapat yang dipercayainya.
-      
-        Zayn mempunyai minat yang sederhana tetapi bermakna baginya. Dia suka membaca, menulis catatan harian, dan kadang-kadang melukis secara santai untuk mengekspresikan diri. Aktiviti-aktiviti ini membantunya menenangkan fikiran dan memberi ruang untuk memproses kehidupan yang penuh cabaran.
-      
-        Matlamat utama Zayn adalah mencari sahabat perempuannya ketika kecil yang hilang di hutan, seseorang yang pernah sangat rapat dengannya dan meninggalkan kesan mendalam dalam hidupnya. Impian ini menjadi dorongan baginya untuk terus berharap, walaupun perjalanan hidupnya penuh cabaran dan sunyi.
-      
-        Walaupun hidup sendiri, Zayn belajar berdikari dan fokus pada kehidupannya. Dia menyimpan harapan bahawa suatu hari dia akan bertemu kembali dengan sahabatnya dan membina semula ikatan yang hilang sejak kecil.
+      <div class="trait">Membaca Buku</div>
+      <div class="trait">Menulis Catatan</div>
+      <div class="trait">Melukis Santai</div>
+      <div class="trait">Mendengar Muzik</div>
     </div>
+  </div>
+
+  <!-- Personaliti -->
+  <div class="section">
+    <h3>Personaliti</h3>
+    <div class="traits">
+      <div class="trait">Pendiam</div>
+      <div class="trait">Introvert</div>
+      <div class="trait">Fokus</div>
+      <div class="trait">Observatif</div>
+    </div>
+  </div>
+
+  <!-- Matlamat -->
+  <div class="section">
+    <h3>Matlamat</h3>
+    <p>
+      Matlamat utama Zayn adalah untuk mencari sahabat perempuannya ketika kecil yang hilang di hutan. Impian ini memberi motivasi kepadanya walaupun hidupnya lebih berdikari dan sunyi.
+    </p>
+  </div>
+
+</div>
 
 <script>
 const audio=document.getElementById("audio");
@@ -322,4 +354,3 @@ window.addEventListener("scroll",()=>{
 
 </body>
 </html>
-
