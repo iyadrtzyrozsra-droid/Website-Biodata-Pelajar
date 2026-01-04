@@ -36,7 +36,8 @@ body{
   padding:0 16px;
   z-index:9999;
   box-sizing:border-box;
-  transition:top .3s ease, height .3s ease, padding .3s ease;
+  transition:top .4s ease, opacity .4s ease, height .3s ease, padding .3s ease;
+  opacity:1;
 }
 
 /* controls */
@@ -87,7 +88,8 @@ body{
   align-items:center;
   z-index:9998;
   box-sizing:border-box;
-  transition:top .3s ease;
+  transition:top .4s ease, opacity .4s ease;
+  opacity:1;
 }
 
 /* progress */
@@ -317,7 +319,7 @@ function format(sec){
   return m+":"+s;
 }
 
-/* SHRINK & HIDE NAVBAR ON SCROLL (slider ikut) */
+/* SHRINK + HIDE FADE NAVBAR & SLIDER */
 let lastScroll=0;
 window.addEventListener("scroll",()=>{
   let cur=window.pageYOffset;
@@ -325,13 +327,17 @@ window.addEventListener("scroll",()=>{
   if(cur>lastScroll){ 
     // scroll ke bawah
     navbar.classList.add("shrink");
-    navbar.style.top="-70px"; // navbar hilang
-    slider.style.top="5px";   // slider ikut naik
+    navbar.style.top="-70px";
+    navbar.style.opacity="0";
+    slider.style.top="5px";
+    slider.style.opacity="0";
   } else {
     // scroll ke atas
     navbar.classList.remove("shrink");
-    navbar.style.top="0";      // navbar muncul
-    slider.style.top="65px";   // slider kembali bawah navbar
+    navbar.style.top="0";
+    navbar.style.opacity="1";
+    slider.style.top="65px";
+    slider.style.opacity="1";
   }
   lastScroll=cur;
 });
