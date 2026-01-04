@@ -10,11 +10,11 @@ body{
   font-family:'Segoe UI',sans-serif;
   background:linear-gradient(135deg,#1f1c2c,#928DAB);
   color:#333;
-  padding-top:60px; /* ruang navbar slim */
+  padding-top:60px; /* ruang navbar */
   line-height:1.5;
 }
 
-/* NAVBAR SLIM */
+/* NAVBAR SLIM & STABIL */
 .music-nav{
   position:fixed;
   top:0;
@@ -24,25 +24,24 @@ body{
   max-width:900px;
   display:flex;
   align-items:center;
-  justify-content:center; /* button tengah */
   gap:6px;
-  padding:6px 12px; /* slim */
+  padding:6px 12px;
   background:rgba(70,13,87,0.9);
   backdrop-filter:blur(12px);
   border-radius:0 0 16px 16px;
   z-index:9999;
-  height:50px; /* tinggi tetap */
+  height:50px;
+  justify-content:flex-start; /* logo di kiri, button ikut di kanan */
+  flex-wrap:wrap; /* untuk phone */
 }
 
-/* LOGO BESAR FLOAT KIRI */
+/* LOGO RESPONSIVE */
 .nav-logo{
-  position:absolute;
-  left:12px;
-  top:50%;
-  transform:translateY(-50%);
-  width:100px;
+  width:50px; /* mobile kecil */
   height:auto;
   object-fit:contain;
+  margin-right:8px;
+  flex-shrink:0;
 }
 
 /* BUTTONS KECIL */
@@ -69,6 +68,8 @@ body{
   border-radius:3px;
   background:linear-gradient(90deg,#7f00ff,#e100ff);
   cursor:pointer;
+  flex:1; /* ikut ruang */
+  min-width:50px;
 }
 #progress::-webkit-slider-thumb,
 #volume::-webkit-slider-thumb{
@@ -164,19 +165,19 @@ body{
 
 /* RESPONSIVE TABLET/DESKTOP */
 @media (min-width:600px){
-  .nav-logo{width:120px;}
+  .nav-logo{width:90px;}
 }
 
 /* LARGE DESKTOP */
 @media (min-width:900px){
-  .nav-logo{width:150px;}
+  .nav-logo{width:120px;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- MUSIC PLAYER SLIM + LOGO FLOAT -->
+<!-- MUSIC PLAYER SLIM + RESPONSIVE LOGO -->
 <nav class="music-nav">
   <img src="logo.png" alt="Logo" class="nav-logo">
   <audio id="audio">
