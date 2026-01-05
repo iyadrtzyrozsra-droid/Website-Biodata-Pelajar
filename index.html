@@ -15,6 +15,115 @@ body{
   padding-top:80px; /* ruang navbar */
   display:flex;
   justify-content:center;
+  transition: all 0.3s;
+}
+
+/* ===== NAVBAR ===== */
+.navbar{
+  position:fixed;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  background:#14141c;
+  width:90%;
+  border-radius:14px;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 20px 40px rgba(0,0,0,.6);
+  z-index:1000;
+}
+
+.logo{
+  font-weight:700;
+  font-size:22px;
+  color:#b56cff;
+}
+
+/* Hamburger icon */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  cursor:pointer;
+  gap:5px;
+  width:25px;
+  height:20px;
+  justify-content:space-between;
+}
+
+.hamburger div{
+  width:25px;
+  height:3px;
+  background:#b56cff;
+  border-radius:2px;
+  transition: all 0.4s ease;
+}
+
+/* Hamburger transform jadi X */
+.hamburger.active div:nth-child(1){
+  transform: rotate(45deg) translate(5px,5px);
+}
+.hamburger.active div:nth-child(2){
+  opacity:0;
+}
+.hamburger.active div:nth-child(3){
+  transform: rotate(-45deg) translate(5px,-5px);
+}
+
+/* OVERLAY */
+.overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.3); /* gelap di belakang */
+  display:none;
+  z-index:999;
+}
+
+/* MOBILE MENU */
+.nav-links{
+  position:fixed;
+  top:0;
+  right:-100%; /* start hidden */
+  height:100vh;
+  width:90%; /* hampir seluruh layar */
+  max-width:350px;
+  background:rgba(20,20,28,0.95);
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  gap:30px;
+  transition:right 0.4s ease;
+  border-radius:14px 0 0 14px;
+  z-index:1000;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#ccc;
+  font-size:18px;
+  font-weight:600;
+  transition: color 0.3s;
+}
+.nav-links a:hover{color:#b56cff}
+
+/* Show menu */
+.overlay.show{
+  display:block;
+}
+.overlay.show .nav-links{
+  right:0;
+}
+
+/* Hamburger tampil mobile */
+@media(max-width:900px){
+  .hamburger{
+    display:flex;
+  }
 }
 
 /* ===== BIODATA CARD ===== */
@@ -100,98 +209,27 @@ body{
     margin-top:80px; /* untuk beri ruang navbar */
   }
 }
-
-/* NAVBAR */
-.navbar{
-  position:fixed;
-  top:0;
-  left:50%;
-  transform:translateX(-50%);
-  background:#14141c;
-  width:90%;
-  border-radius:14px;
-  padding:14px 20px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  box-shadow:0 20px 40px rgba(0,0,0,.6);
-  z-index:999;
-  transition: top 0.3s ease;
-}
-
-.logo{
-  font-weight:700;
-  font-size:22px;
-  color:#b56cff;
-}
-
-.nav-links{
-  display:flex;
-  gap:20px;
-}
-
-.nav-links a{
-  text-decoration:none;
-  color:#ccc;
-  font-size:14px;
-  font-weight:600;
-}
-
-.nav-links a:hover{color:#b56cff}
-
-/* Hamburger icon */
-.hamburger{
-  display:none;
-  flex-direction:column;
-  cursor:pointer;
-  gap:5px;
-}
-
-.hamburger div{
-  width:25px;
-  height:3px;
-  background:#b56cff;
-  transition:0.3s;
-}
-
-/* MOBILE MENU */
-@media(max-width:900px){
-  .nav-links{
-    position:fixed;
-    top:70px;
-    left:0;
-    width:100%;
-    flex-direction:column;
-    background:#14141c;
-    display:none;
-    padding:20px 0;
-    text-align:center;
-  }
-  .nav-links.show{
-    display:flex;
-  }
-  .hamburger{
-    display:flex;
-  }
-}
 </style>
-</head>
 
 <body>
 
 <!-- NAVBAR -->
 <div class="navbar" id="navbar">
   <div class="logo">UNRESOLVED;</div>
+  <div class="hamburger" id="hamburger">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<!-- MOBILE MENU & OVERLAY -->
+<div class="overlay" id="overlay">
   <div class="nav-links" id="navLinks">
     <a href="#">HOME</a>
     <a href="#">STORY</a>
     <a href="#">CHARACTER</a>
     <a href="#">WORLD</a>
-  </div>
-  <div class="hamburger" id="hamburger">
-    <div></div>
-    <div></div>
-    <div></div>
   </div>
 </div>
 
@@ -241,27 +279,25 @@ body{
 </div>
 
 <script>
-  // Hamburger toggle
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
+const hamburger = document.getElementById('hamburger');
+const overlay = document.getElementById('overlay');
+const navLinks = document.getElementById('navLinks');
 
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-  });
+// toggle menu
+hamburger.addEventListener('click', () => {
+  overlay.classList.toggle('show');
+  hamburger.classList.toggle('active');
+  document.body.style.overflow = overlay.classList.contains('show') ? 'hidden' : 'auto';
+});
 
-  // Navbar hide/show on scroll
-  let prevScroll = window.pageYOffset;
-  const navbar = document.getElementById('navbar');
-
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    if(currentScroll > prevScroll && currentScroll > 100){
-      navbar.style.top = "-100px"; // scroll down → hide
-    } else {
-      navbar.style.top = "0";      // scroll up → show
-    }
-    prevScroll = currentScroll;
-  });
+// tutup menu bila klik overlay tapi bukan menu
+overlay.addEventListener('click', (e) => {
+  if(!navLinks.contains(e.target)){
+    overlay.classList.remove('show');
+    hamburger.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+});
 </script>
 
 </body>
