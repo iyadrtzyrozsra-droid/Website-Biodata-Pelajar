@@ -304,16 +304,44 @@ body{
 </div>
 
 <!-- AUDIO -->
-<audio id="audio" loop>
-  <source src="lagu.mp3" type="audio/mpeg">
+<audio id="audio">
+  <source id="audioSource" type="audio/mpeg">
 </audio>
 
 <script>
+// LETAK NAMA LAGU DI SINI
+const namaLagu = "Cahaya Pada Kita(1).mp3"; // <-- tukar nama fail lagu di sini
+
+// Dapatkan elemen audio dan set source
+const audio = document.getElementById('audio');
+const audioSource = document.getElementById('audioSource');
+audioSource.src = namaLagu;
+audio.load();
+
+// BUTTON PLAY/PAUSE
+const playBtn = document.getElementById('playBtn');
+playBtn.addEventListener('click', () => {
+  if(audio.paused){
+    audio.play();
+    playBtn.textContent = "❚❚";
+  } else {
+    audio.pause();
+    playBtn.textContent = "▶";
+  }
+});
+
+// LOOP DENGAN DELAY 2 SAAT
+audio.addEventListener('ended', () => {
+  setTimeout(() => {
+    audio.play();
+  }, 2000);
+});
+
+// HAMBURGER MENU
 const hamburger = document.getElementById('hamburger');
 const overlay = document.getElementById('overlay');
 const navLinks = document.getElementById('navLinks');
 
-// toggle menu
 hamburger.addEventListener('click', () => {
   overlay.classList.toggle('show');
   hamburger.classList.toggle('active');
@@ -327,32 +355,6 @@ overlay.addEventListener('click', (e) => {
     hamburger.classList.remove('active');
     document.body.style.overflow = 'auto';
   }
-});
-
-// PLAY BUTTON
-const audio = document.getElementById('audio');
-const playBtn = document.getElementById('playBtn');
-
-playBtn.addEventListener('click', () => {
-  if(audio.paused){
-    audio.play();
-    playBtn.textContent = "❚❚";
-  } else {
-    audio.pause();
-    playBtn.textContent = "▶";
-  }
-});
-
-// auto-loop lagu
-audio.addEventListener('ended', () => {
-  audio.play();
-});
-
-  // auto-loop dengan delay
-audio.addEventListener('ended', () => {
-  setTimeout(() => {
-    audio.play();
-  }, 2000); // delay 2000ms = 2 saat
 });
 </script>
 
