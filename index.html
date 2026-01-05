@@ -17,104 +17,6 @@ body{
   justify-content:center;
 }
 
-/* ===== NAV PLAYER ===== */
-.music-nav{
-  position:fixed;
-  top:0;
-  left:50%;
-  transform:translateX(-50%);
-  width:95%;
-  max-width:900px;
-  height:60px;
-  background:rgba(18,18,18,.95);
-  backdrop-filter:blur(14px);
-  border-radius:0 0 22px 22px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
-  padding:0 16px;
-  z-index:9999;
-  box-sizing:border-box;
-  transition:top .4s ease, opacity .4s ease, height .3s ease, padding .3s ease;
-  opacity:1;
-}
-
-/* controls */
-.controls{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.controls button{
-  width:34px;
-  height:34px;
-  border:none;
-  border-radius:50%;
-  background:#1db954;
-  color:black;
-  font-size:14px;
-  cursor:pointer;
-  transition:transform .2s, width .3s, height .3s;
-}
-.controls button:hover{
-  transform:scale(1.1);
-}
-
-/* SHRINK EFFECT */
-.music-nav.shrink{
-  height:50px;
-  padding:0 12px;
-}
-.music-nav.shrink .controls button{
-  width:28px;
-  height:28px;
-}
-
-/* progress & volume container */
-.mobile-sliders{
-  position:fixed;
-  top:65px; /* bawah navbar */
-  left:50%;
-  transform:translateX(-50%);
-  width:95%;
-  max-width:900px;
-  background:rgba(18,18,18,.85);
-  backdrop-filter:blur(14px);
-  border-radius:12px;
-  padding:6px 12px;
-  display:flex;
-  gap:12px;
-  align-items:center;
-  z-index:9998;
-  box-sizing:border-box;
-  transition:top .4s ease, opacity .4s ease;
-  opacity:1;
-}
-
-/* progress */
-.progress-wrap{
-  display:flex;
-  align-items:center;
-  gap:4px;
-  flex:1;
-}
-.progress-wrap span{
-  font-size:11px;
-  color:#b3b3b3;
-}
-#progress{
-  flex:1;
-  height:4px;
-  accent-color:#1db954;
-}
-
-/* volume */
-#volume{
-  width:60px;
-  accent-color:#1db954;
-}
-
 /* ===== BIODATA CARD ===== */
 .container{
   background:
@@ -195,23 +97,11 @@ body{
 @media(max-width:600px){
   .container{
     width:90%;
-    margin-top:120px; /* untuk beri ruang navbar + sliders */
-  }
-  .music-nav{
-    justify-content:center;
-    padding:0 8px;
-  }
-  .music-nav.shrink{
-    height:55px;
-    padding:0 6px;
-  }
-  .music-nav.shrink .controls button{
-    width:26px;
-    height:26px;
+    margin-top:80px; /* untuk beri ruang navbar */
   }
 }
 
-  /* NAVBAR */
+/* NAVBAR */
 .navbar{
   position:fixed;
   top:0;
@@ -289,7 +179,7 @@ body{
 
 <body>
 
-  <!-- NAVBAR -->
+<!-- NAVBAR -->
 <div class="navbar" id="navbar">
   <div class="logo">UNRESOLVED;</div>
   <div class="nav-links" id="navLinks">
@@ -303,25 +193,6 @@ body{
     <div></div>
     <div></div>
   </div>
-</div>
-
-<!-- ===== NAV PLAYER ===== -->
-<nav class="music-nav" id="navbar">
-  <div class="controls">
-    <button onclick="rewind()">⏮</button>
-    <button id="playBtn" onclick="togglePlay()">▶</button>
-    <button onclick="forward()">⏭</button>
-  </div>
-</nav>
-
-<!-- ===== MOBILE SLIDERS ===== -->
-<div class="mobile-sliders" id="slider">
-  <div class="progress-wrap">
-    <span id="current">0:00</span>
-    <input type="range" id="progress" value="0">
-    <span id="duration">0:00</span>
-  </div>
-  <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
 </div>
 
 <!-- ===== BIODATA ZAYN ===== -->
@@ -370,68 +241,6 @@ body{
 </div>
 
 <script>
-const audio=document.getElementById("audio") || new Audio("Cahaya Pada Kita(1).mp3");
-const playBtn=document.getElementById("playBtn");
-const progress=document.getElementById("progress");
-const volume=document.getElementById("volume");
-const current=document.getElementById("current");
-const duration=document.getElementById("duration");
-const navbar=document.getElementById("navbar");
-const slider=document.getElementById("slider");
-
-function togglePlay(){
-  if(audio.paused){
-    audio.play();
-    playBtn.textContent="❚❚";
-  }else{
-    audio.pause();
-    playBtn.textContent="▶";
-  }
-}
-function rewind(){audio.currentTime=Math.max(0,audio.currentTime-10);}
-function forward(){audio.currentTime=Math.min(audio.duration,audio.currentTime+10);}
-
-audio.addEventListener("loadedmetadata",()=>{
-  duration.textContent=format(audio.duration);
-});
-
-audio.addEventListener("timeupdate",()=>{
-  progress.value=(audio.currentTime/audio.duration)*100||0;
-  current.textContent=format(audio.currentTime);
-});
-
-progress.oninput=()=>audio.currentTime=(progress.value/100)*audio.duration;
-volume.oninput=()=>audio.volume=volume.value;
-
-function format(sec){
-  let m=Math.floor(sec/60);
-  let s=Math.floor(sec%60).toString().padStart(2,"0");
-  return m+":"+s;
-}
-
-/* SHRINK + HIDE FADE NAVBAR & SLIDER */
-let lastScroll=0;
-window.addEventListener("scroll",()=>{
-  let cur=window.pageYOffset;
-
-  if(cur>lastScroll){ 
-    // scroll ke bawah
-    navbar.classList.add("shrink");
-    navbar.style.top="-70px";
-    navbar.style.opacity="0";
-    slider.style.top="5px";
-    slider.style.opacity="0";
-  } else {
-    // scroll ke atas
-    navbar.classList.remove("shrink");
-    navbar.style.top="0";
-    navbar.style.opacity="1";
-    slider.style.top="65px";
-    slider.style.opacity="1";
-  }
-  lastScroll=cur;
-});
-
   // Hamburger toggle
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
@@ -457,4 +266,3 @@ window.addEventListener("scroll",()=>{
 
 </body>
 </html>
-
