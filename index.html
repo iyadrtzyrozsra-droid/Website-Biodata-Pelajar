@@ -21,7 +21,7 @@ body{
 /* ===== NAVBAR FLOAT ===== */
 .navbar{
   position:fixed;
-  top:20px;
+  top:0; /* rapat dengan atas screen */
   left:50%;
   transform:translateX(-50%);
   width:90%;
@@ -151,7 +151,7 @@ body{
   padding:32px;
   box-shadow:0 30px 70px rgba(0,0,0,.35);
   color:white;
-  margin-top:120px; /* jarak dari navbar float */
+  margin-top:80px; /* jarak card supaya tak tertutup navbar */
 }
 
 /* profile */
@@ -203,7 +203,7 @@ body{
 @media(max-width:600px){
   .container{
     width:90%;
-    margin-top:140px;
+    margin-top:100px;
   }
 }
 </style>
@@ -218,9 +218,9 @@ body{
   </div>
 
   <div class="nav-links-desktop">
-    <a href="#">HOME</a>
+    <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Universe/">HOME</a>
     <a href="#">STORY</a>
-    <a href="#">CHARACTER</a>
+    <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Characters/">CHARACTER</a>
     <a href="#">WORLD</a>
   </div>
 
@@ -233,9 +233,9 @@ body{
 
 <!-- MOBILE MENU -->
 <div class="nav-links-mobile" id="navLinksMobile">
-  <a href="#">HOME</a>
+  <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Universe/">HOME</a>
   <a href="#">STORY</a>
-  <a href="#">CHARACTER</a>
+  <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Characters/">CHARACTER</a>
   <a href="#">WORLD</a>
 </div>
 <div class="overlay" id="overlay"></div>
@@ -321,7 +321,7 @@ let prevScroll = window.pageYOffset;
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll',()=>{
   const currentScroll = window.pageYOffset;
-  navbar.style.top = (currentScroll>prevScroll && currentScroll>100)?'-100px':'20px';
+  navbar.style.top = (currentScroll>prevScroll && currentScroll>100)?'-100px':'0';
   prevScroll = currentScroll;
 });
 </script>
