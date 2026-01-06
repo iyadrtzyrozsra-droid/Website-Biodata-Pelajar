@@ -19,7 +19,7 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== NAVBAR ===== */
+/* ===== NAVBAR FLOAT ===== */
 .navbar{
   position:fixed;
   top:0;
@@ -33,7 +33,7 @@ body{
   align-items:center;
   justify-content:space-between;
   box-shadow:0 20px 40px rgba(0,0,0,.6);
-  z-index:1000;
+  z-index:1001; /* pastikan navbar di atas menu mobile */
 }
 
 .logo-container{
@@ -109,7 +109,7 @@ body{
   transform: rotate(-45deg) translate(5px,-5px);
 }
 
-/* MOBILE MENU */
+/* MOBILE MENU DI BELAKANG NAVBAR */
 .nav-links{
   position:fixed;
   top:0;
@@ -124,7 +124,7 @@ body{
   padding-right:20px;
   gap:30px;
   transition:right 0.4s ease;
-  z-index:1000;
+  z-index:1000; /* dibawah navbar */
 }
 .nav-links a{
   text-decoration:none;
@@ -134,7 +134,7 @@ body{
   transition: color 0.3s;
 }
 .nav-links a:hover{color:#b56cff;}
-.nav-links.show { right:0; } /* slide masuk menu */
+.nav-links.show { right:0; }
 
 /* Overlay */
 .overlay{
@@ -144,7 +144,7 @@ body{
   width:100%;
   height:100%;
   display:none;
-  z-index:999;
+  z-index:999; /* antara navbar dan menu */
   background: rgba(0,0,0,0.3);
 }
 
@@ -246,7 +246,7 @@ body{
     <div></div>
   </div>
 
-  <!-- MOBILE MENU -->
+  <!-- MOBILE MENU DI BELAKANG NAVBAR -->
   <div class="nav-links" id="navLinks">
     <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Universe/">HOME</a>
     <a href="#">STORY</a>
