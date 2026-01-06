@@ -19,7 +19,7 @@ body{
   overflow-x:hidden;
 }
 
-/* NAVBAR */
+/* ===== NAVBAR ===== */
 .navbar{
   position:fixed;
   top:0;
@@ -68,7 +68,7 @@ body{
   transform: scale(1.1);
 }
 
-/* MENU DESKTOP (TAMBAHAN SAHAJA) */
+/* MENU DESKTOP */
 .nav-desktop{
   display:flex;
   gap:22px;
@@ -109,18 +109,6 @@ body{
   transform: rotate(-45deg) translate(5px,-5px);
 }
 
-/* OVERLAY */
-.overlay{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  display:none;
-  z-index:999;
-  background: rgba(0,0,0,0.3);
-}
-
 /* MOBILE MENU */
 .nav-links{
   position:fixed;
@@ -138,7 +126,6 @@ body{
   transition:right 0.4s ease;
   z-index:1000;
 }
-
 .nav-links a{
   text-decoration:none;
   color:#ccc;
@@ -146,7 +133,20 @@ body{
   font-weight:600;
   transition: color 0.3s;
 }
-.nav-links a:hover{color:#b56cff}
+.nav-links a:hover{color:#b56cff;}
+.nav-links.show { right:0; } /* slide masuk menu */
+
+/* Overlay */
+.overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  display:none;
+  z-index:999;
+  background: rgba(0,0,0,0.3);
+}
 
 /* Hamburger tampil mobile */
 @media(max-width:900px){
@@ -239,13 +239,14 @@ body{
     <a href="#">WORLD</a>
   </div>
 
+  <!-- HAMBURGER -->
   <div class="hamburger" id="hamburger">
     <div></div>
     <div></div>
     <div></div>
   </div>
 
-  <!-- MOBILE MENU ASAL -->
+  <!-- MOBILE MENU -->
   <div class="nav-links" id="navLinks">
     <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Universe/">HOME</a>
     <a href="#">STORY</a>
@@ -254,10 +255,13 @@ body{
   </div>
 </div>
 
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
 <!-- CARD -->
 <div class="container">
   <div class="profile">
-    <img src="profile.jpeg">
+    <img src="profile.jpeg" alt="Zayn">
     <h1>Ahmad Zayn Rafi</h1>
     <p>Pelajar, 16 Tahun • Tingkatan 4</p>
   </div>
@@ -303,32 +307,43 @@ body{
 </audio>
 
 <script>
-// PLAY / PAUSE
-const audio=document.getElementById("audio");
-const playBtn=document.getElementById("playBtn");
-playBtn.onclick=()=>{
+// PLAY / PAUSE AUDIO
+const audio = document.getElementById("audio");
+const playBtn = document.getElementById("playBtn");
+playBtn.onclick = () => {
   if(audio.paused){
     audio.play(); playBtn.textContent="❚❚";
-  }else{
+  } else {
     audio.pause(); playBtn.textContent="▶";
   }
 };
 
-// HAMBURGER
-const hamburger=document.getElementById("hamburger");
-const navLinks=document.getElementById("navLinks");
-hamburger.onclick=()=>{
+// HAMBURGER MOBILE
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+const overlay = document.getElementById("overlay");
+
+hamburger.onclick = () => {
   hamburger.classList.toggle("active");
   navLinks.classList.toggle("show");
+  overlay.style.display = navLinks.classList.contains("show") ? "block" : "none";
+  document.body.style.overflow = navLinks.classList.contains("show") ? "hidden" : "auto";
+};
+
+overlay.onclick = () => {
+  hamburger.classList.remove("active");
+  navLinks.classList.remove("show");
+  overlay.style.display = "none";
+  document.body.style.overflow = "auto";
 };
 
 // NAVBAR HIDE ON SCROLL
-let prevScroll=window.pageYOffset;
-window.addEventListener("scroll",()=>{
-  const current=window.pageYOffset;
+let prevScroll = window.pageYOffset;
+window.addEventListener("scroll", () => {
+  const current = window.pageYOffset;
   document.getElementById("navbar").style.top =
-    current>prevScroll && current>100 ? "-100px" : "0";
-  prevScroll=current;
+    current > prevScroll && current > 100 ? "-100px" : "0";
+  prevScroll = current;
 });
 </script>
 
