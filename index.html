@@ -15,18 +15,17 @@ body{
   padding-top:80px;
   display:flex;
   justify-content:center;
-  transition: all 0.3s;
   overflow-x:hidden;
 }
 
-/* NAVBAR */
+/* ===== NAVBAR ===== */
 .navbar{
   position:fixed;
   top:0;
   left:50%;
   transform:translateX(-50%);
-  background:#14141c;
   width:90%;
+  background:#14141c;
   border-radius:14px;
   padding:14px 20px;
   display:flex;
@@ -36,183 +35,125 @@ body{
   z-index:1000;
 }
 
+/* logo */
 .logo-container{
   display:flex;
   align-items:center;
   gap:10px;
 }
-
 .logo{
-  font-weight:700;
   font-size:22px;
+  font-weight:700;
   color:#b56cff;
 }
 
-/* Play button */
+/* play */
 #playBtn{
   width:28px;
   height:28px;
   border:none;
   border-radius:50%;
   background:#1db954;
-  color:black;
   font-weight:bold;
   cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:14px;
-  transition: transform 0.2s;
-}
-#playBtn:hover{
-  transform: scale(1.1);
 }
 
-/* Hamburger */
+/* ===== DESKTOP MENU ===== */
+.nav-desktop{
+  display:flex;
+  gap:24px;
+}
+.nav-desktop a{
+  color:#ccc;
+  text-decoration:none;
+  font-weight:600;
+}
+.nav-desktop a:hover{
+  color:#b56cff;
+}
+
+/* ===== HAMBURGER ===== */
 .hamburger{
   display:none;
   flex-direction:column;
-  cursor:pointer;
   gap:5px;
-  width:25px;
-  height:20px;
-  justify-content:space-between;
+  cursor:pointer;
 }
 .hamburger div{
   width:25px;
   height:3px;
   background:#b56cff;
   border-radius:2px;
-  transition: all 0.4s ease;
+  transition:.3s;
 }
 .hamburger.active div:nth-child(1){
-  transform: rotate(45deg) translate(5px,5px);
+  transform:rotate(45deg) translate(5px,5px);
 }
 .hamburger.active div:nth-child(2){
   opacity:0;
 }
 .hamburger.active div:nth-child(3){
-  transform: rotate(-45deg) translate(5px,-5px);
+  transform:rotate(-45deg) translate(5px,-5px);
 }
 
-/* OVERLAY */
-.overlay{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  display:none;
-  z-index:999;
-  background: rgba(0,0,0,0.3);
-}
-
-/* MOBILE MENU */
+/* ===== MOBILE MENU ===== */
 .nav-links{
   position:fixed;
   top:0;
   right:-100%;
+  width:55%;
   height:100vh;
-  width:50%;
   background:#14141c;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:flex-end;
-  padding-right:20px;
   gap:30px;
-  transition:right 0.4s ease;
-  z-index:1000;
+  padding-right:20px;
+  transition:.4s;
+  z-index:999;
 }
-
+.nav-links.show{
+  right:0;
+}
 .nav-links a{
-  text-decoration:none;
   color:#ccc;
   font-size:18px;
   font-weight:600;
-  transition: color 0.3s;
+  text-decoration:none;
 }
 .nav-links a:hover{color:#b56cff}
 
-/* show menu */
-.overlay.show{
-  display:block;
-}
-.overlay.show .nav-links{
-  right:0;
-}
-
-/* Hamburger tampil mobile */
-@media(max-width:900px){
-  .hamburger{
-    display:flex;
-  }
-}
-
-/* ===== BIODATA CARD WRAPPER ===== */
-.card-wrapper{
-  display:flex;
-  justify-content:center;
-  width:100%;
-}
-
-/* ===== BIODATA CARD ===== */
+/* ===== CARD ===== */
 .container{
   background:
     linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
     url("back-card.jpg") center/cover no-repeat;
   width:440px;
-  border-radius:26px;
   padding:32px;
-  box-shadow:0 30px 70px rgba(0,0,0,.35);
+  border-radius:26px;
   color:white;
   margin-top:20px;
-  opacity:0;
-  transform:translateY(20px);
-  animation:fadeIn 1s forwards;
-}
-
-/* fade in card */
-@keyframes fadeIn{
-  to{opacity:1; transform:translateY(0);}
+  box-shadow:0 30px 70px rgba(0,0,0,.35);
 }
 
 /* profile */
-.profile{
-  text-align:center;
-}
+.profile{text-align:center}
 .profile img{
   width:140px;
   height:140px;
   border-radius:50%;
   object-fit:cover;
   border:4px solid #ffd905;
-  transition:transform .3s ease;
 }
-.profile img:hover{
-  transform:scale(1.05) rotate(1deg);
-}
-.profile h1{
-  margin:12px 0 4px;
-}
-.profile p{
-  margin:0;
-  opacity:.9;
-}
+.profile h1{margin:12px 0 4px}
 
-/* sections */
-.section{
-  margin-top:20px;
-  line-height:1.6;
-}
-.section h3{
-  margin-bottom:8px;
-  color:#ffd905;
-}
+/* section */
+.section{margin-top:20px}
+.section h3{color:#ffd905}
 
-/* traits & hobi */
+/* traits */
 .traits{
-  margin-top:12px;
   display:flex;
   flex-wrap:wrap;
   gap:8px;
@@ -224,20 +165,15 @@ body{
   border-radius:20px;
   font-size:12px;
   font-weight:600;
-  transition:transform .2s, box-shadow .2s;
-  cursor:pointer;
-}
-.trait:hover{
-  transform:scale(1.1);
-  box-shadow:0 0 10px #1db954;
 }
 
-/* ===== MOBILE ===== */
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .nav-desktop{display:none}
+  .hamburger{display:flex}
+}
 @media(max-width:600px){
-  .container{
-    width:90%;
-    margin-top:80px;
-  }
+  .container{width:90%}
 }
 </style>
 </head>
@@ -250,135 +186,84 @@ body{
     <div class="logo">UNRESOLVED; |</div>
     <button id="playBtn">▶</button>
   </div>
-  <div class="hamburger" id="hamburger">
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
-  <div class="nav-links" id="navLinks">
+
+  <!-- DESKTOP MENU -->
+  <div class="nav-desktop">
     <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Universe/">HOME</a>
     <a href="#">STORY</a>
     <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Characters/">CHARACTER</a>
     <a href="#">WORLD</a>
   </div>
+
+  <!-- HAMBURGER -->
+  <div class="hamburger" id="hamburger">
+    <div></div><div></div><div></div>
+  </div>
 </div>
 
-<!-- WRAPPER UNTUK CARD CENTER -->
-<div class="card-wrapper">
-  <div class="container">
-    <div class="profile">
-      <img src="profile.jpeg">
-      <h1>Ahmad Zayn Rafi</h1>
-      <p>Pelajar, 16 Tahun • Tingkatan 4</p>
-    </div>
+<!-- MOBILE MENU -->
+<div class="nav-links" id="navLinks">
+  <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Universe/">HOME</a>
+  <a href="#">STORY</a>
+  <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Characters/">CHARACTER</a>
+  <a href="#">WORLD</a>
+</div>
 
-    <div class="section">
-      <h3>Tentang Zayn</h3>
-      <p>
-        Ahmad Zayn Rafi seorang pelajar pendiam dan introvert. Dia lebih selesa bekerja sendiri dan jarang bercampur dengan kumpulan besar. Zayn suka mengamati persekitaran dan memilih rakan rapat yang dipercayainya sahaja. Hidupnya sejak kecil memerlukan dia belajar berdikari.
-      </p>
-    </div>
+<!-- CARD -->
+<div class="container">
+  <div class="profile">
+    <img src="profile.jpeg">
+    <h1>Ahmad Zayn Rafi</h1>
+    <p>Pelajar, 16 Tahun • Tingkatan 4</p>
+  </div>
 
-    <div class="section">
-      <h3>Minat & Hobi</h3>
-      <div class="traits">
-        <div class="trait">Membaca Buku</div>
-        <div class="trait">Menulis Catatan</div>
-        <div class="trait">Melukis Santai</div>
-        <div class="trait">Mendengar Muzik</div>
-      </div>
-    </div>
+  <div class="section">
+    <h3>Tentang Zayn</h3>
+    <p>Zayn seorang pelajar pendiam dan introvert yang belajar berdikari sejak kecil.</p>
+  </div>
 
-    <div class="section">
-      <h3>Personaliti</h3>
-      <div class="traits">
-        <div class="trait">Pendiam</div>
-        <div class="trait">Introvert</div>
-        <div class="trait">Fokus</div>
-        <div class="trait">Observatif</div>
-      </div>
-    </div>
-
-    <div class="section">
-      <h3>Matlamat</h3>
-      <p>
-        Matlamat utama Zayn adalah untuk mencari sahabat perempuannya ketika kecil yang hilang di hutan. Impian ini memberi motivasi kepadanya walaupun hidupnya lebih berdikari dan sunyi.
-      </p>
+  <div class="section">
+    <h3>Minat & Hobi</h3>
+    <div class="traits">
+      <div class="trait">Membaca</div>
+      <div class="trait">Menulis</div>
+      <div class="trait">Melukis</div>
+      <div class="trait">Muzik</div>
     </div>
   </div>
 </div>
 
 <!-- AUDIO -->
 <audio id="audio">
-  <source id="audioSource" type="audio/mpeg">
+  <source src="Cahaya Pada Kita(1).mp3" type="audio/mpeg">
 </audio>
 
 <script>
-// LETAK NAMA LAGU
-const namaLagu = "Cahaya Pada Kita(1).mp3";
-const audio = document.getElementById('audio');
-const audioSource = document.getElementById('audioSource');
-audioSource.src = namaLagu;
-audio.load();
-
-// BUTTON PLAY/PAUSE
-const playBtn = document.getElementById('playBtn');
-playBtn.addEventListener('click', () => {
+const audio = document.getElementById("audio");
+const playBtn = document.getElementById("playBtn");
+playBtn.onclick=()=>{
   if(audio.paused){
-    audio.play();
-    playBtn.textContent = "❚❚";
-  } else {
-    audio.pause();
-    playBtn.textContent = "▶";
+    audio.play(); playBtn.textContent="❚❚";
+  }else{
+    audio.pause(); playBtn.textContent="▶";
   }
-});
+};
 
-// LOOP 2 DETIK
-audio.addEventListener('ended', () => {
-  setTimeout(() => { audio.play(); }, 2000);
-});
+/* hamburger */
+const ham=document.getElementById("hamburger");
+const menu=document.getElementById("navLinks");
+ham.onclick=()=>{
+  ham.classList.toggle("active");
+  menu.classList.toggle("show");
+};
 
-// HAMBURGER MENU
-const hamburger = document.getElementById('hamburger');
-const overlay = document.createElement('div');
-overlay.style.position='fixed';
-overlay.style.inset='0';
-overlay.style.background='rgba(0,0,0,0.3)';
-overlay.style.zIndex='998';
-overlay.style.opacity='0';
-overlay.style.pointerEvents='none';
-overlay.style.transition='opacity 0.3s';
-document.body.appendChild(overlay);
-
-const navLinks = document.getElementById('navLinks');
-
-hamburger.addEventListener('click', ()=>{
-  hamburger.classList.toggle('active');
-  navLinks.classList.toggle('show');
-  overlay.style.opacity = navLinks.classList.contains('show') ? '1' : '0';
-  overlay.style.pointerEvents = navLinks.classList.contains('show') ? 'auto' : 'none';
-  document.body.classList.toggle('lock-scroll');
-});
-
-overlay.addEventListener('click', ()=>{
-  hamburger.classList.remove('active');
-  navLinks.classList.remove('show');
-  overlay.style.opacity='0';
-  overlay.style.pointerEvents='none';
-  document.body.classList.remove('lock-scroll');
-});
-
-// Navbar hide/show on scroll
-let prevScroll = window.pageYOffset;
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', ()=>{
-  const currentScroll = window.pageYOffset;
-  if(currentScroll > prevScroll && currentScroll > 100){
-    navbar.style.top='-100px';
-  } else {
-    navbar.style.top='0';
-  }
-  prevScroll = currentScroll;
+/* navbar hide on scroll */
+let prev=0;
+window.addEventListener("scroll",()=>{
+  const cur=window.pageYOffset;
+  document.getElementById("navbar").style.top =
+    cur>prev && cur>100 ? "-120px":"0";
+  prev=cur;
 });
 </script>
 
