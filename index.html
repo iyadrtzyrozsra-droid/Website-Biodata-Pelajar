@@ -7,6 +7,7 @@
 <link rel="icon" type="image/png" href="logo.png">
 
 <style>
+/* ===== BODY ===== */
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
@@ -17,20 +18,21 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== NAVBAR FLOAT DI ATAS SCREEN ===== */
+/* ===== NAVBAR FLOAT ===== */
 .navbar{
   position:fixed;
   top:20px; /* float di atas screen */
   left:50%;
   transform:translateX(-50%);
-  background:#14141c;
+  background:rgba(20,20,28,0.95); /* sedikit transparansi */
   border-radius:14px;
-  padding:14px 20px;
+  padding:14px 30px;
+  height:70px; /* tinggi konsisten */
   display:flex;
   align-items:center;
   justify-content:space-between;
   box-shadow:0 20px 40px rgba(0,0,0,.6);
-  z-index:1001; /* navbar di atas */
+  z-index:1001;
   transition: top 0.3s;
 }
 
@@ -80,7 +82,7 @@ body{
   color:#b56cff;
 }
 
-/* Hamburger */
+/* HAMBURGER */
 .hamburger{
   display:none;
   flex-direction:column;
@@ -142,7 +144,7 @@ body{
   width:100%;
   height:100%;
   display:none;
-  z-index:999; /* antara navbar dan menu */
+  z-index:999; /* di antara navbar dan menu */
   background: rgba(0,0,0,0.3);
 }
 
@@ -162,7 +164,7 @@ body{
   padding:32px;
   box-shadow:0 30px 70px rgba(0,0,0,.35);
   color:white;
-  margin-top:140px; /* supaya card tak tertutup navbar float */
+  margin-top:120px; /* jarak dengan navbar float */
 }
 
 /* profile */
@@ -231,9 +233,9 @@ body{
 
   <!-- MENU DESKTOP -->
   <div class="nav-desktop">
-    <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Universe/">HOME</a>
+    <a href="#">HOME</a>
     <a href="#">STORY</a>
-    <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Characters/">CHARACTER</a>
+    <a href="#">CHARACTER</a>
     <a href="#">WORLD</a>
   </div>
 
@@ -245,11 +247,11 @@ body{
   </div>
 </div>
 
-<!-- MOBILE MENU DI BODY -->
+<!-- MOBILE MENU -->
 <div class="nav-links" id="navLinks">
-  <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Universe/">HOME</a>
+  <a href="#">HOME</a>
   <a href="#">STORY</a>
-  <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Characters">CHARACTER</a>
+  <a href="#">CHARACTER</a>
   <a href="#">WORLD</a>
 </div>
 
