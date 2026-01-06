@@ -7,12 +7,12 @@
 <link rel="icon" type="image/png" href="logo.png">
 
 <style>
-/* ===== BODY ===== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
 body{
-  margin:0;
-  font-family:'Segoe UI',sans-serif;
   background:linear-gradient(135deg,#1f1c2c,#928DAB);
   min-height:100vh;
+  scroll-behavior:smooth;
+  color:#fff;
   display:flex;
   justify-content:center;
   overflow-x:hidden;
@@ -21,16 +21,16 @@ body{
 /* ===== NAVBAR FLOAT ===== */
 .navbar{
   position:fixed;
-  top:20px; /* float di atas screen */
+  top:20px;
   left:50%;
   transform:translateX(-50%);
-  background:rgba(20,20,28,0.95); /* sedikit transparansi */
+  width:90%;
+  padding:14px 20px;
+  background:#14141c;
   border-radius:14px;
-  padding:14px 30px;
-  height:70px; /* tinggi konsisten */
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   box-shadow:0 20px 40px rgba(0,0,0,.6);
   z-index:1001;
   transition: top 0.3s;
@@ -41,14 +41,12 @@ body{
   align-items:center;
   gap:10px;
 }
-
 .logo{
   font-weight:700;
   font-size:22px;
   color:#b56cff;
 }
 
-/* Play button */
 #playBtn{
   width:28px;
   height:28px;
@@ -57,40 +55,36 @@ body{
   background:#1db954;
   color:black;
   font-weight:bold;
+  font-size:14px;
   cursor:pointer;
   display:flex;
-  align-items:center;
   justify-content:center;
-  font-size:14px;
+  align-items:center;
   transition: transform 0.2s;
 }
-#playBtn:hover{
-  transform: scale(1.1);
-}
+#playBtn:hover{transform:scale(1.1);}
 
-/* MENU DESKTOP */
-.nav-desktop{
+/* NAV LINKS DESKTOP */
+.nav-links-desktop{
   display:flex;
-  gap:22px;
+  gap:20px;
 }
-.nav-desktop a{
-  color:#ccc;
+.nav-links-desktop a{
   text-decoration:none;
+  color:#ccc;
+  font-size:14px;
   font-weight:600;
 }
-.nav-desktop a:hover{
-  color:#b56cff;
-}
+.nav-links-desktop a:hover{color:#b56cff;}
 
-/* HAMBURGER */
+/* HAMBURGER MOBILE */
 .hamburger{
   display:none;
   flex-direction:column;
-  cursor:pointer;
-  gap:5px;
+  justify-content:space-between;
   width:25px;
   height:20px;
-  justify-content:space-between;
+  cursor:pointer;
 }
 .hamburger div{
   width:25px;
@@ -99,18 +93,12 @@ body{
   border-radius:2px;
   transition: all 0.4s ease;
 }
-.hamburger.active div:nth-child(1){
-  transform: rotate(45deg) translate(5px,5px);
-}
-.hamburger.active div:nth-child(2){
-  opacity:0;
-}
-.hamburger.active div:nth-child(3){
-  transform: rotate(-45deg) translate(5px,-5px);
-}
+.hamburger.active div:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.active div:nth-child(2){opacity:0;}
+.hamburger.active div:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
 
-/* MOBILE MENU DI BELAKANG NAVBAR */
-.nav-links{
+/* NAV LINKS MOBILE DI BELAKANG NAVBAR */
+.nav-links-mobile{
   position:fixed;
   top:0;
   right:-100%;
@@ -124,34 +112,33 @@ body{
   padding-right:20px;
   gap:30px;
   transition:right 0.4s ease;
-  z-index:1000; /* di belakang navbar */
+  z-index:1000;
 }
-.nav-links a{
+.nav-links-mobile a{
   text-decoration:none;
   color:#ccc;
   font-size:18px;
   font-weight:600;
-  transition: color 0.3s;
 }
-.nav-links a:hover{color:#b56cff;}
-.nav-links.show { right:0; }
+.nav-links-mobile a:hover{color:#b56cff;}
+.nav-links-mobile.show{right:0;}
 
-/* Overlay */
+/* OVERLAY */
 .overlay{
   position:fixed;
   top:0;
   left:0;
   width:100%;
   height:100%;
-  display:none;
-  z-index:999; /* di antara navbar dan menu */
   background: rgba(0,0,0,0.3);
+  display:none;
+  z-index:999;
 }
 
-/* Hamburger tampil mobile */
+/* MOBILE DISPLAY */
 @media(max-width:900px){
   .hamburger{display:flex;}
-  .nav-desktop{display:none;}
+  .nav-links-desktop{display:none;}
 }
 
 /* ===== BIODATA CARD ===== */
@@ -164,7 +151,7 @@ body{
   padding:32px;
   box-shadow:0 30px 70px rgba(0,0,0,.35);
   color:white;
-  margin-top:120px; /* jarak dengan navbar float */
+  margin-top:120px; /* jarak dari navbar float */
 }
 
 /* profile */
@@ -221,25 +208,22 @@ body{
 }
 </style>
 </head>
-
 <body>
 
-<!-- NAVBAR FLOAT DI ATAS SCREEN -->
+<!-- NAVBAR FLOAT -->
 <div class="navbar" id="navbar">
   <div class="logo-container">
     <div class="logo">UNRESOLVED; |</div>
     <button id="playBtn">▶</button>
   </div>
 
-  <!-- MENU DESKTOP -->
-  <div class="nav-desktop">
+  <div class="nav-links-desktop">
     <a href="#">HOME</a>
     <a href="#">STORY</a>
     <a href="#">CHARACTER</a>
     <a href="#">WORLD</a>
   </div>
 
-  <!-- HAMBURGER -->
   <div class="hamburger" id="hamburger">
     <div></div>
     <div></div>
@@ -248,17 +232,15 @@ body{
 </div>
 
 <!-- MOBILE MENU -->
-<div class="nav-links" id="navLinks">
+<div class="nav-links-mobile" id="navLinksMobile">
   <a href="#">HOME</a>
   <a href="#">STORY</a>
   <a href="#">CHARACTER</a>
   <a href="#">WORLD</a>
 </div>
-
-<!-- Overlay -->
 <div class="overlay" id="overlay"></div>
 
-<!-- CARD -->
+<!-- BIODATA CARD -->
 <div class="container">
   <div class="profile">
     <img src="profile.jpeg" alt="Zayn">
@@ -307,43 +289,40 @@ body{
 </audio>
 
 <script>
-// PLAY / PAUSE AUDIO
+// AUDIO PLAY/PAUSE
 const audio = document.getElementById("audio");
 const playBtn = document.getElementById("playBtn");
-playBtn.onclick = () => {
-  if(audio.paused){
-    audio.play(); playBtn.textContent="❚❚";
-  } else {
-    audio.pause(); playBtn.textContent="▶";
-  }
-};
+playBtn.addEventListener("click",()=>{
+  if(audio.paused){audio.play();playBtn.textContent="❚❚";}
+  else{audio.pause();playBtn.textContent="▶";}
+});
 
 // HAMBURGER MOBILE
 const hamburger = document.getElementById("hamburger");
-const navLinks = document.getElementById("navLinks");
+const navLinksMobile = document.getElementById("navLinksMobile");
 const overlay = document.getElementById("overlay");
 
-hamburger.onclick = () => {
-  hamburger.classList.toggle("active");
-  navLinks.classList.toggle("show");
-  overlay.style.display = navLinks.classList.contains("show") ? "block" : "none";
-  document.body.style.overflow = navLinks.classList.contains("show") ? "hidden" : "auto";
-};
+hamburger.addEventListener('click', ()=>{
+  hamburger.classList.toggle('active');
+  navLinksMobile.classList.toggle('show');
+  overlay.style.display = navLinksMobile.classList.contains('show') ? 'block':'none';
+  document.body.style.overflow = navLinksMobile.classList.contains('show') ? 'hidden':'auto';
+});
 
-overlay.onclick = () => {
-  hamburger.classList.remove("active");
-  navLinks.classList.remove("show");
-  overlay.style.display = "none";
-  document.body.style.overflow = "auto";
-};
+overlay.addEventListener('click', ()=>{
+  hamburger.classList.remove('active');
+  navLinksMobile.classList.remove('show');
+  overlay.style.display='none';
+  document.body.style.overflow='auto';
+});
 
-// NAVBAR HIDE ON SCROLL
+// NAVBAR HIDE/SHOW ON SCROLL
 let prevScroll = window.pageYOffset;
-window.addEventListener("scroll", () => {
-  const current = window.pageYOffset;
-  document.getElementById("navbar").style.top =
-    current > prevScroll && current > 100 ? "-100px" : "20px";
-  prevScroll = current;
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll',()=>{
+  const currentScroll = window.pageYOffset;
+  navbar.style.top = (currentScroll>prevScroll && currentScroll>100)?'-100px':'20px';
+  prevScroll = currentScroll;
 });
 </script>
 
