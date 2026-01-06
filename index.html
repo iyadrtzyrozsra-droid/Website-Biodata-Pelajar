@@ -7,25 +7,33 @@
 <link rel="icon" type="image/png" href="logo.png">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
-body{background:linear-gradient(135deg,#1f1c2c,#928DAB);min-height:100vh;padding-top:80px;overflow-x:hidden;}
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#1f1c2c,#928DAB);
+  min-height:100vh;
+  padding-top:80px;
+  display:flex;
+  justify-content:center;
+  transition: all 0.3s;
+  overflow-x:hidden;
+}
 
-/* ===== NAVBAR ===== */
+/* NAVBAR */
 .navbar{
   position:fixed;
   top:0;
   left:50%;
   transform:translateX(-50%);
-  width:90%;
-  padding:14px 20px;
   background:#14141c;
+  width:90%;
   border-radius:14px;
+  padding:14px 20px;
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
   box-shadow:0 20px 40px rgba(0,0,0,.6);
   z-index:1000;
-  transition: top 0.3s;
 }
 
 .logo-container{
@@ -33,12 +41,14 @@ body{background:linear-gradient(135deg,#1f1c2c,#928DAB);min-height:100vh;padding
   align-items:center;
   gap:10px;
 }
+
 .logo{
   font-weight:700;
   font-size:22px;
   color:#b56cff;
 }
 
+/* Play button */
 #playBtn{
   width:28px;
   height:28px;
@@ -47,36 +57,26 @@ body{background:linear-gradient(135deg,#1f1c2c,#928DAB);min-height:100vh;padding
   background:#1db954;
   color:black;
   font-weight:bold;
-  font-size:14px;
   cursor:pointer;
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
+  font-size:14px;
   transition: transform 0.2s;
 }
-#playBtn:hover{transform:scale(1.1);}
-
-/* NAV LINKS DESKTOP */
-.nav-links-desktop{
-  display:flex;
-  gap:20px;
+#playBtn:hover{
+  transform: scale(1.1);
 }
-.nav-links-desktop a{
-  text-decoration:none;
-  color:#ccc;
-  font-size:14px;
-  font-weight:600;
-}
-.nav-links-desktop a:hover{color:#b56cff;}
 
-/* HAMBURGER MOBILE */
+/* Hamburger */
 .hamburger{
   display:none;
   flex-direction:column;
-  justify-content:space-between;
+  cursor:pointer;
+  gap:5px;
   width:25px;
   height:20px;
-  cursor:pointer;
+  justify-content:space-between;
 }
 .hamburger div{
   width:25px;
@@ -85,34 +85,15 @@ body{background:linear-gradient(135deg,#1f1c2c,#928DAB);min-height:100vh;padding
   border-radius:2px;
   transition: all 0.4s ease;
 }
-.hamburger.active div:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
-.hamburger.active div:nth-child(2){opacity:0;}
-.hamburger.active div:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
-
-/* NAV LINKS MOBILE */
-.nav-links-mobile{
-  position:fixed;
-  top:0;
-  right:-100%;
-  width:50%;
-  height:100vh;
-  background:#14141c;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:flex-end;
-  padding-right:20px;
-  gap:30px;
-  transition:right 0.4s ease;
-  z-index:999;
+.hamburger.active div:nth-child(1){
+  transform: rotate(45deg) translate(5px,5px);
 }
-.nav-links-mobile a{
-  text-decoration:none;
-  color:#ccc;
-  font-size:18px;
-  font-weight:600;
+.hamburger.active div:nth-child(2){
+  opacity:0;
 }
-.nav-links-mobile a:hover{color:#b56cff;}
+.hamburger.active div:nth-child(3){
+  transform: rotate(-45deg) translate(5px,-5px);
+}
 
 /* OVERLAY */
 .overlay{
@@ -121,15 +102,58 @@ body{background:linear-gradient(135deg,#1f1c2c,#928DAB);min-height:100vh;padding
   left:0;
   width:100%;
   height:100%;
-  background: rgba(0,0,0,0.3);
   display:none;
-  z-index:998;
+  z-index:999;
+  background: rgba(0,0,0,0.3);
 }
 
-/* MOBILE DISPLAY */
+/* MOBILE MENU */
+.nav-links{
+  position:fixed;
+  top:0;
+  right:-100%;
+  height:100vh;
+  width:50%;
+  background:#14141c;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-end;
+  padding-right:20px;
+  gap:30px;
+  transition:right 0.4s ease;
+  z-index:1000;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#ccc;
+  font-size:18px;
+  font-weight:600;
+  transition: color 0.3s;
+}
+.nav-links a:hover{color:#b56cff}
+
+/* show menu */
+.overlay.show{
+  display:block;
+}
+.overlay.show .nav-links{
+  right:0;
+}
+
+/* Hamburger tampil mobile */
 @media(max-width:900px){
-  .hamburger{display:flex;}
-  .nav-links-desktop{display:none;}
+  .hamburger{
+    display:flex;
+  }
+}
+
+/* ===== BIODATA CARD WRAPPER ===== */
+.card-wrapper{
+  display:flex;
+  justify-content:center;
+  width:100%;
 }
 
 /* ===== BIODATA CARD ===== */
@@ -147,19 +171,74 @@ body{background:linear-gradient(135deg,#1f1c2c,#928DAB);min-height:100vh;padding
   transform:translateY(20px);
   animation:fadeIn 1s forwards;
 }
-@keyframes fadeIn{to{opacity:1; transform:translateY(0);}}
-.profile{text-align:center;}
-.profile img{width:140px;height:140px;border-radius:50%;object-fit:cover;border:4px solid #ffd905;transition:transform .3s ease;}
-.profile img:hover{transform:scale(1.05) rotate(1deg);}
-.profile h1{margin:12px 0 4px;}
-.profile p{margin:0;opacity:.9;}
-.section{margin-top:20px;line-height:1.6;}
-.section h3{margin-bottom:8px;color:#ffd905;}
-.traits{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;}
-.trait{background:#1db954;color:black;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;transition:transform .2s, box-shadow .2s;cursor:pointer;}
-.trait:hover{transform:scale(1.1);box-shadow:0 0 10px #1db954;}
 
-@media(max-width:600px){.container{width:90%;margin-top:80px;}}
+/* fade in card */
+@keyframes fadeIn{
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* profile */
+.profile{
+  text-align:center;
+}
+.profile img{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid #ffd905;
+  transition:transform .3s ease;
+}
+.profile img:hover{
+  transform:scale(1.05) rotate(1deg);
+}
+.profile h1{
+  margin:12px 0 4px;
+}
+.profile p{
+  margin:0;
+  opacity:.9;
+}
+
+/* sections */
+.section{
+  margin-top:20px;
+  line-height:1.6;
+}
+.section h3{
+  margin-bottom:8px;
+  color:#ffd905;
+}
+
+/* traits & hobi */
+.traits{
+  margin-top:12px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.trait{
+  background:#1db954;
+  color:black;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:600;
+  transition:transform .2s, box-shadow .2s;
+  cursor:pointer;
+}
+.trait:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 10px #1db954;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:600px){
+  .container{
+    width:90%;
+    margin-top:80px;
+  }
+}
 </style>
 </head>
 
@@ -168,96 +247,125 @@ body{background:linear-gradient(135deg,#1f1c2c,#928DAB);min-height:100vh;padding
 <!-- NAVBAR -->
 <div class="navbar" id="navbar">
   <div class="logo-container">
-    <div class="logo">UNRESOLVED;</div>
+    <div class="logo">UNRESOLVED; |</div>
     <button id="playBtn">▶</button>
   </div>
-
-  <div class="nav-links-desktop">
+  <div class="hamburger" id="hamburger">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="nav-links" id="navLinks">
     <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Universe/">HOME</a>
     <a href="#">STORY</a>
     <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Characters/">CHARACTER</a>
     <a href="#">WORLD</a>
   </div>
-
-  <div class="hamburger" id="hamburger">
-    <div></div><div></div><div></div>
-  </div>
 </div>
 
-<div class="nav-links-mobile" id="navLinksMobile">
-  <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Universe/">HOME</a>
-  <a href="#">STORY</a>
-  <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Characters/">CHARACTER</a>
-  <a href="#">WORLD</a>
-</div>
-<div class="overlay" id="overlay"></div>
-
-<!-- BIODATA CARD -->
-<div class="container">
-  <div class="profile">
-    <img src="profile.jpeg">
-    <h1>Ahmad Zayn Rafi</h1>
-    <p>Pelajar, 16 Tahun • Tingkatan 4</p>
-  </div>
-
-  <div class="section">
-    <h3>Tentang Zayn</h3>
-    <p>
-      Ahmad Zayn Rafi seorang pelajar pendiam dan introvert. Dia lebih selesa bekerja sendiri dan jarang bercampur dengan kumpulan besar. Zayn suka mengamati persekitaran dan memilih rakan rapat yang dipercayainya sahaja. Hidupnya sejak kecil memerlukan dia belajar berdikari.
-    </p>
-  </div>
-
-  <div class="section">
-    <h3>Minat & Hobi</h3>
-    <div class="traits">
-      <div class="trait">Membaca Buku</div>
-      <div class="trait">Menulis Catatan</div>
-      <div class="trait">Melukis Santai</div>
-      <div class="trait">Mendengar Muzik</div>
+<!-- WRAPPER UNTUK CARD CENTER -->
+<div class="card-wrapper">
+  <div class="container">
+    <div class="profile">
+      <img src="profile.jpeg">
+      <h1>Ahmad Zayn Rafi</h1>
+      <p>Pelajar, 16 Tahun • Tingkatan 4</p>
     </div>
-  </div>
 
-  <div class="section">
-    <h3>Personaliti</h3>
-    <div class="traits">
-      <div class="trait">Pendiam</div>
-      <div class="trait">Introvert</div>
-      <div class="trait">Fokus</div>
-      <div class="trait">Observatif</div>
+    <div class="section">
+      <h3>Tentang Zayn</h3>
+      <p>
+        Ahmad Zayn Rafi seorang pelajar pendiam dan introvert. Dia lebih selesa bekerja sendiri dan jarang bercampur dengan kumpulan besar. Zayn suka mengamati persekitaran dan memilih rakan rapat yang dipercayainya sahaja. Hidupnya sejak kecil memerlukan dia belajar berdikari.
+      </p>
     </div>
-  </div>
 
-  <div class="section">
-    <h3>Matlamat</h3>
-    <p>
-      Matlamat utama Zayn adalah untuk mencari sahabat perempuannya ketika kecil yang hilang di hutan. Impian ini memberi motivasi kepadanya walaupun hidupnya lebih berdikari dan sunyi.
-    </p>
+    <div class="section">
+      <h3>Minat & Hobi</h3>
+      <div class="traits">
+        <div class="trait">Membaca Buku</div>
+        <div class="trait">Menulis Catatan</div>
+        <div class="trait">Melukis Santai</div>
+        <div class="trait">Mendengar Muzik</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Personaliti</h3>
+      <div class="traits">
+        <div class="trait">Pendiam</div>
+        <div class="trait">Introvert</div>
+        <div class="trait">Fokus</div>
+        <div class="trait">Observatif</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Matlamat</h3>
+      <p>
+        Matlamat utama Zayn adalah untuk mencari sahabat perempuannya ketika kecil yang hilang di hutan. Impian ini memberi motivasi kepadanya walaupun hidupnya lebih berdikari dan sunyi.
+      </p>
+    </div>
   </div>
 </div>
 
 <!-- AUDIO -->
 <audio id="audio">
-  <source src="Cahaya Pada Kita(1).mp3" type="audio/mp3">
+  <source id="audioSource" type="audio/mpeg">
 </audio>
 
 <script>
-// Hamburger mobile
+// LETAK NAMA LAGU
+const namaLagu = "Cahaya Pada Kita(1).mp3";
+const audio = document.getElementById('audio');
+const audioSource = document.getElementById('audioSource');
+audioSource.src = namaLagu;
+audio.load();
+
+// BUTTON PLAY/PAUSE
+const playBtn = document.getElementById('playBtn');
+playBtn.addEventListener('click', () => {
+  if(audio.paused){
+    audio.play();
+    playBtn.textContent = "❚❚";
+  } else {
+    audio.pause();
+    playBtn.textContent = "▶";
+  }
+});
+
+// LOOP 2 DETIK
+audio.addEventListener('ended', () => {
+  setTimeout(() => { audio.play(); }, 2000);
+});
+
+// HAMBURGER MENU
 const hamburger = document.getElementById('hamburger');
-const navLinksMobile = document.getElementById('navLinksMobile');
-const overlay = document.getElementById('overlay');
+const overlay = document.createElement('div');
+overlay.style.position='fixed';
+overlay.style.inset='0';
+overlay.style.background='rgba(0,0,0,0.3)';
+overlay.style.zIndex='998';
+overlay.style.opacity='0';
+overlay.style.pointerEvents='none';
+overlay.style.transition='opacity 0.3s';
+document.body.appendChild(overlay);
+
+const navLinks = document.getElementById('navLinks');
 
 hamburger.addEventListener('click', ()=>{
   hamburger.classList.toggle('active');
-  navLinksMobile.classList.toggle('show');
-  overlay.style.display = navLinksMobile.classList.contains('show') ? 'block' : 'none';
-  document.body.style.overflow = navLinksMobile.classList.contains('show') ? 'hidden' : 'auto';
+  navLinks.classList.toggle('show');
+  overlay.style.opacity = navLinks.classList.contains('show') ? '1' : '0';
+  overlay.style.pointerEvents = navLinks.classList.contains('show') ? 'auto' : 'none';
+  document.body.classList.toggle('lock-scroll');
 });
 
 overlay.addEventListener('click', ()=>{
   hamburger.classList.remove('active');
-  navLinksMobile.classList.remove('show');
-  overlay.style.display='none';
-  document.body.style.overflow='auto';
+  navLinks.classList.remove('show');
+  overlay.style.opacity='0';
+  overlay.style.pointerEvents='none';
+  document.body.classList.remove('lock-scroll');
 });
 
 // Navbar hide/show on scroll
@@ -272,16 +380,6 @@ window.addEventListener('scroll', ()=>{
   }
   prevScroll = currentScroll;
 });
-
-// Audio play/pause + loop 2s
-const audio = document.getElementById('audio');
-let play=false;
-const playBtn = document.getElementById('playBtn');
-playBtn.addEventListener('click', ()=>{
-  if(!play){audio.play();playBtn.textContent="❚❚";play=true;}
-  else{audio.pause();playBtn.textContent="▶";play=false;}
-});
-audio.addEventListener("ended",()=>{setTimeout(()=>audio.play(),2000);});
 </script>
 
 </body>
