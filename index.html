@@ -15,25 +15,24 @@ body{
   padding-top:80px;
   display:flex;
   justify-content:center;
-  transition: all 0.3s;
   overflow-x:hidden;
+  transition: all 0.3s;
 }
 
 /* ===== NAVBAR FLOAT ===== */
 .navbar{
   position:fixed;
-  top:0;
-  left:50%;
-  transform:translateX(-50%);
+  top:20px;
+  left:5%;
+  right:5%;
   background:#14141c;
-  width:90%;
   border-radius:14px;
   padding:14px 20px;
   display:flex;
   align-items:center;
   justify-content:space-between;
   box-shadow:0 20px 40px rgba(0,0,0,.6);
-  z-index:1001; /* pastikan navbar di atas menu mobile */
+  z-index:1001; /* navbar di atas menu */
 }
 
 .logo-container{
@@ -246,7 +245,7 @@ body{
     <div></div>
   </div>
 
-  <!-- MOBILE MENU DI BELAKANG NAVBAR -->
+  <!-- MOBILE MENU -->
   <div class="nav-links" id="navLinks">
     <a href="https://iyadrtzyrozsra-droid.github.io/Website-Unresolved-Universe/">HOME</a>
     <a href="#">STORY</a>
@@ -342,7 +341,7 @@ let prevScroll = window.pageYOffset;
 window.addEventListener("scroll", () => {
   const current = window.pageYOffset;
   document.getElementById("navbar").style.top =
-    current > prevScroll && current > 100 ? "-100px" : "0";
+    current > prevScroll && current > 100 ? "-100px" : "20px";
   prevScroll = current;
 });
 </script>
